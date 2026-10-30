@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "skills": {
+      "command": "node",
+      "args": ["skill-runner.js"],
+      "env": {
+        "SKILLS_PATH": "./.claude/skills"
+      }
+    }
+  }
+}
