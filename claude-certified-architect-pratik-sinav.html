@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Certified Architect Pratik Sınav — 60 Soru</title>
+  <style>
+@page {
+  size: A4;
+  margin: 14mm 12mm 16mm 12mm;
+}
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #111;
+  font-family: "Segoe UI", "Calibri", "Liberation Sans", Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.45;
+}
+body {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 12mm 10mm 16mm 10mm;
+}
+header.kapak {
+  border-bottom: 3px solid #111;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+header.kapak h1 {
+  font-size: 18pt;
+  margin: 0 0 4px 0;
+  font-weight: 700;
+}
+header.kapak p {
+  margin: 3px 0;
+}
+.toc {
+  margin: 0 0 18px 0;
+  padding: 0;
+  list-style: none;
+  font-size: 10.5pt;
+}
+.toc li {
+  margin: 2px 0;
+}
+.toc a {
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px dotted #666;
+}
+.domain {
+  border-top: 2px solid #111;
+  border-bottom: 1px solid #111;
+  padding: 6px 0;
+  margin: 22px 0 12px 0;
+  page-break-after: avoid;
+}
+.domain h2 {
+  font-size: 13pt;
+  margin: 0;
+}
+.domain p {
+  margin: 4px 0 0 0;
+  font-size: 10pt;
+}
+article.soru {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  margin: 0 0 16px 0;
+  padding: 0 0 12px 0;
+  border-bottom: 1px dashed #999;
+}
+.soru-ust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+  margin: 0 0 6px 0;
+}
+.no {
+  font-weight: 700;
+  font-size: 12pt;
+}
+.baslik {
+  font-weight: 700;
+  font-size: 12pt;
+}
+.senaryo {
+  font-size: 10pt;
+  margin: 0 0 8px 0;
+}
+.kok {
+  margin: 0 0 8px 0;
+}
+ol.siklar {
+  margin: 0 0 10px 0;
+  padding-left: 22px;
+}
+ol.siklar li {
+  margin: 3px 0;
+}
+.cevap-kutu {
+  border: 1px solid #333;
+  padding: 8px 10px;
+  background: #f7f7f7;
+}
+.dogru {
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+.neden, .yanlis, .ipucu {
+  margin: 0 0 8px 0;
+}
+.yanlis p, .neden p, .ipucu p {
+  margin: 0 0 5px 0;
+}
+.yanlis strong.harf {
+  display: inline-block;
+  min-width: 1.2em;
+}
+mark.kw {
+  background: #ffe566;
+  color: #111;
+  font-weight: 700;
+  padding: 0 0.12em;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+u.imp {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1.4px;
+}
+@media print {
+  body {
+    max-width: none;
+    padding: 0;
+    font-size: 10pt;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    border: 0;
+  }
+  article.soru {
+    page-break-inside: avoid;
+  }
+  header.kapak {
+    page-break-after: avoid;
+  }
+}
+</style>
+</head>
+<body>
+<header class="kapak">
+  <h1>Claude Certified Architect Foundation — Pratik Sınav</h1>
+</header>
+<h2>İçindekiler</h2><ol class="toc"><li><a href="#s1">Soru 1. Coordinator-Subagent Pattern'i tanımak</a></li><li><a href="#s2">Soru 2. Agentic loop ve stop_reason</a></li><li><a href="#s3">Soru 3. Subagent context isolation</a></li><li><a href="#s4">Soru 4. Task decomposition stratejisi</a></li><li><a href="#s5">Soru 5. Silent subagent failure</a></li><li><a href="#s6">Soru 6. tool_choice konfigürasyonu</a></li><li><a href="#s7">Soru 7. Parallel exploration için context forking</a></li><li><a href="#s8">Soru 8. Multi-agent research sistemi tasarlamak</a></li><li><a href="#s9">Soru 9. Escalation tasarımı</a></li><li><a href="#s10">Soru 10. Agent bölmek mi, tool eklemek mi?</a></li><li><a href="#s11">Soru 11. Agent SDK hook yaşam döngüsü</a></li><li><a href="#s12">Soru 12. Hook-based vs prompt-based enforcement</a></li><li><a href="#s13">Soru 13. Bounded retry + escalation tasarımı</a></li><li><a href="#s14">Soru 14. Multi-agent session state</a></li><li><a href="#s15">Soru 15. Agentic loop ve tool_choice: any</a></li><li><a href="#s16">Soru 16. AI Fluency: Four D's</a></li><li><a href="#s17">Soru 17. CLAUDE.md dosya konumu</a></li><li><a href="#s18">Soru 18. CLAUDE.md hierarchy ve precedence</a></li><li><a href="#s19">Soru 19. CI/CD: -p flag</a></li><li><a href="#s20">Soru 20. CI/CD için --bare flag</a></li><li><a href="#s21">Soru 21. Custom skill vs CLAUDE.md</a></li><li><a href="#s22">Soru 22. MCP configuration scoping</a></li><li><a href="#s23">Soru 23. Pipeline’da machine-parseable output</a></li><li><a href="#s24">Soru 24. Claude Code’da JSON Schema enforcement</a></li><li><a href="#s25">Soru 25. Takım coding standard’ı için CLAUDE.md</a></li><li><a href="#s26">Soru 26. Claude Code ile CI pipeline tasarımı</a></li><li><a href="#s27">Soru 27. --output-format json vs prompt-based JSON</a></li><li><a href="#s28">Soru 28. Yeni ekip üyesi için Claude Code config</a></li><li><a href="#s29">Soru 29. Strict JSON schema enforcement neyi garanti eder?</a></li><li><a href="#s30">Soru 30. “Always return JSON” prompt tuzağı</a></li><li><a href="#s31">Soru 31. Specific feedback ile validation-retry loop</a></li><li><a href="#s32">Soru 32. Few-shot: amaç ve anti-pattern</a></li><li><a href="#s33">Soru 33. Toplu extraction için Batch API</a></li><li><a href="#s34">Soru 34. Invoice extraction için validation pipeline</a></li><li><a href="#s35">Soru 35. Prompt-based vs programmatic enforcement</a></li><li><a href="#s36">Soru 36. Escalation öncesi maksimum retry</a></li><li><a href="#s37">Soru 37. CI/CD code review için prompt tasarımı</a></li><li><a href="#s38">Soru 38. Uzun belge extraction ve lost in the middle</a></li><li><a href="#s39">Soru 39. API üzerinden structured output</a></li><li><a href="#s40">Soru 40. Extraction accuracy: geçerli JSON, yanlış değer</a></li><li><a href="#s41">Soru 41. MCP primitives</a></li><li><a href="#s42">Soru 42. MCP’te Tools vs Resources</a></li><li><a href="#s43">Soru 43. Tool description routing mekanizmasıdır</a></li><li><a href="#s44">Soru 44. Agent başına tool sayısı</a></li><li><a href="#s45">Soru 45. MCP project configuration nerede?</a></li><li><a href="#s46">Soru 46. MCP config’de kişisel API key</a></li><li><a href="#s47">Soru 47. Shared ve personal MCP server tasarımı</a></li><li><a href="#s48">Soru 48. Multi-agent sistemde tool error handling</a></li><li><a href="#s49">Soru 49. Resource mı Tool mu?</a></li><li><a href="#s50">Soru 50. Tool misrouting olan agent’ı yeniden tasarlamak</a></li><li><a href="#s51">Soru 51. Multi-agent’ta silent tool failure</a></li><li><a href="#s52">Soru 52. Lost in the middle etkisi</a></li><li><a href="#s53">Soru 53. Daha büyük context window attention’ı düzeltmez</a></li><li><a href="#s54">Soru 54. Self-reported confidence calibration</a></li><li><a href="#s55">Soru 55. Prompt Caching ekonomisi</a></li><li><a href="#s56">Soru 56. Blocking workflow’da Batch API</a></li><li><a href="#s57">Soru 57. Extraction reliability için cross-referencing</a></li><li><a href="#s58">Soru 58. Parallel analiz için context forking</a></li><li><a href="#s59">Soru 59. Observability</a></li><li><a href="#s60">Soru 60. End-to-end reliability</a></li></ol><section class="domain" id="d1"><h2>Domain 1 — Agentic Architecture &amp; Orchestration</h2><p>Soru 1–16. Coordinator, subagent, agentic loop, tool_choice, hook, escalation.</p></section>
+<article class="soru" id="s1">
+  <div class="soru-ust">
+    <span class="no">Soru 1.</span>
+    <span class="baslik">Coordinator-Subagent Pattern'i tanımak</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Customer Support Resolution Agent</p>
+  <p class="kok">Bir ekip, <mark class="kw">Claude Agent SDK</mark> ile müşteri destek sistemi kuruyor. Tasarım şöyle: tek bir <mark class="kw">primary agent</mark> tüm müşteri isteklerini alır, kategoriyi belirler (billing, returns, account), sonra her birinin kendi <mark class="kw">tool</mark> seti ve <mark class="kw">system prompt</mark>’u olan <mark class="kw">specialized agent</mark>’lara işi devreder. Primary agent sonuçları birleştirip müşteriye cevap verir. Bu tasarım hangi <mark class="kw">architectural pattern</mark>’i anlatır?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">Pipeline orchestration</mark> — sabit sıralı <mark class="kw">handoff</mark></li><li><mark class="kw">Peer-to-peer</mark> multi-agent işbirliği</li><li><mark class="kw">Coordinator-subagent pattern</mark> — <mark class="kw">task delegation</mark> ile</li><li>Tek <mark class="kw">agent</mark>, dinamik <mark class="kw">tool loading</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p>Bu, klasik <mark class="kw">coordinator-subagent pattern</mark>’dir. Şöyle düşün: ofiste bir <em>koordinatör</em> (coordinator) vardır. Müşteri ona gelir. Koordinatör işin türünü anlar, fatura uzmanına veya iade uzmanına gönderir, sonra cevapları tek bir müşteri mesajında birleştirir.</p><p><u class="imp">Tek merkezî agent istekleri alır, görevlere böler, uzman subagent’lara delegate eder ve sonuçları synthesize eder.</u> Coordinator workflow’u yönetir; subagent’lar domain-specific execution yapar. Üç işaret: bir merkezî agent, kategoriye göre branching delegation, cevap öncesi synthesis.</p><p>Bu yüzden doğru şık C’dir. Bir merkez var. Uzmanlar var. En sonda tek bir müşteri cevabı var.</p><p>İşin özü budur. Coordinator yolu çizer. Subagent işi yapar. Sonuçlar tekrar coordinator’da toplanır.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> <mark class="kw">Pipeline</mark> sabit bir sıra demektir: A biter, B başlar, C başlar. Burada akış kategoriye göre <em>dallanır</em>. Billing isteği returns agent’ına gitmez. Linear pipeline değildir. Kategori değişince yol da değişir. Sabit boru hattı bu işi taşımaz.</p><p><strong class="harf">B)</strong> <mark class="kw">Peer-to-peer</mark>’de agent’lar birbirine doğrudan konuşur, merkez yok. Burada net bir <mark class="kw">hub-and-spoke</mark> yapı var: her şey coordinator üzerinden geçer. Burada uzmanlar birbirine değil, merkeze bağlıdır.</p><p><strong class="harf">D)</strong> Dinamik tool loading, her şeyi <em>tek</em> conversation / tek context içinde tutar. Burada ayrı agent’lar, ayrı prompt ve ayrı tool set var. Bu isolation tek agent değildir. Ayrı prompt ve ayrı tool set görüyorsan bu tek agent değildir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">Coordinator-subagent</mark> sınavda en çok çıkan multi-agent pattern’dir. Ezberle: bir coordinator, birden fazla specialized subagent, final response öncesi synthesis. <mark class="kw">Coordinator-subagent</mark> görünce üç şeyi say: merkez, uzmanlar, synthesis.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s2">
+  <div class="soru-ust">
+    <span class="no">Soru 2.</span>
+    <span class="baslik">Agentic loop ve stop_reason</span>
+  </div>
+  <p class="kok">Bir architect, <mark class="kw">Claude Agent SDK</mark> uygulamasını debug ediyor. Agent kullanıcı sorgusunu alır, içinde bir <mark class="kw">tool call</mark> olan yanıt üretir. Uygulamanın sıradaki adımı seçmesi gerekir. API yanıtında <mark class="kw">stop_reason</mark> alanı vardır. <mark class="kw">stop_reason</mark> değerinin <mark class="kw">tool_use</mark> olması ne anlama gelir?</p>
+  <ol class="siklar" type="A"><li>Agent bir <mark class="kw">tool</mark> çağırmak istiyor ve devam etmeden önce <mark class="kw">tool result</mark> bekliyor</li><li>Agent işi bitirdi ve tool başarıyla kullanıldı</li><li>Tool execution başarısız oldu, agent retry istiyor</li><li>Agent maksimum tool call limitini aştı</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p><mark class="kw">tool_use</mark> bir <em>niyet sinyalidir</em>, tamamlanma sinyali değildir. Model durmuştur çünkü bir tool çağırmak ister. Senin uygulamanın yapması gereken: tool’u çalıştır, sonucu geri ver, <mark class="kw">agentic loop</mark> devam etsin.</p><p><u class="imp">Döngü şudur: generate → stop_reason: tool_use → tool’u execute et → result’ı geri ver → tekrar generate → end_turn.</u> Sık yapılan hata: “tool_use gördüm, demek ki tool bitti” sanmak. Hayır: tool henüz senin kodunda çalışmamıştır.</p><p>Yani model “ben bitirdim” demez. Model “bir tool’a ihtiyacım var” der ve bekler.</p><p>Sen tool’u çalıştırmazsan döngü orada kalır. Sonuç gelince model kaldığı yerden devam eder. Bitiş ancak <mark class="kw">end_turn</mark> ile gelir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Tool henüz kullanılmamıştır. Bu, uygulamanın tool’u çağırması için bir <em>request</em>’tir. Bitiş <mark class="kw">end_turn</mark> ile gelir. <mark class="kw">tool_use</mark> henüz bir istektir.</p><p><strong class="harf">C)</strong> <mark class="kw">tool_use</mark> normal invocation isteğidir. Tool hatası, sen execute ettikten sonra ortaya çıkar; stop_reason olarak gelmez. Hata, tool senin kodunda çalıştıktan sonra doğar.</p><p><strong class="harf">D)</strong> Tool limiti aşımı için standart bir stop_reason yoktur. Limit application layer’da (senin kodunda) enforce edilir. Limit aşımı stop_reason olarak gelmez. Onu sen sayarsın.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">stop_reason</mark> modelin bir sonraki adım niyetini söyler. <mark class="kw">tool_use</mark> = “ben durdum, sen tool çalıştır”. <mark class="kw">end_turn</mark> = “cevabım hazır”.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s3">
+  <div class="soru-ust">
+    <span class="no">Soru 3.</span>
+    <span class="baslik">Subagent context isolation</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Multi-Agent Research System</p>
+  <p class="kok">Coordinator agent, quantum computing üzerine uzun bir konuşma yapıyor. Sonra <mark class="kw">Agent tool</mark> ile bir research subagent’a şu görevi verir: quantum error correction üzerine güncel paper’ları bul. Research subagent hangi <mark class="kw">context</mark>’e erişir?</p>
+  <ol class="siklar" type="A"><li>Coordinator ile kullanıcı arasındaki tam <mark class="kw">conversation history</mark></li><li>SDK’nın otomatik ürettiği özetlenmiş conversation history</li><li>Conversation history artı coordinator’ın <mark class="kw">system prompt</mark>’u</li><li>Yalnızca <mark class="kw">Agent tool</mark> ile geçilen <mark class="kw">prompt</mark> string’i, plus subagent’ın kendi system prompt ve tool definition’ları</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p>Subagent’lar <mark class="kw">fresh conversation</mark> ile başlar. Basit bir örnek: yeni bir stajyeri odaya çağırırsın. Önceki 40 dakikalık toplantıyı duymaz. Sadece senin kapıdan söylediğin cümleyi duyar.</p><p>Subagent’ın elinde olanlar: kendi <mark class="kw">system prompt</mark> (<mark class="kw">AgentDefinition</mark>), <mark class="kw">Agent tool</mark> ile geçilen prompt string, (varsa) project-level <mark class="kw">CLAUDE.md</mark>, kendi tool definition’ları.</p><p><u class="imp">Parent conversation history ve coordinator system prompt otomatik geçmez. Bu context isolation kasıtlıdır.</u></p><p>Bunu unutmak kolaydır. Coordinator uzun konuşmuştur. Subagent’ın da aynı şeyi bildiğini varsayarsın. Varsayma.</p><p>Gerekli bilgiyi prompt string’e sen yazarsın. File path, karar, hata mesajı. Yazmazsan subagent bunları göremez.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Subagent parent history’yi inherit etmez. Her subagent boş slate ile başlar. Bu kavram sınavda sık test edilir. Uzun parent konuşma subagent’a akmaz. Bunu varsayma.</p><p><strong class="harf">B)</strong> SDK conversation’ı otomatik özetleyip subagent’a vermez. Özet istiyorsan coordinator’ın prompt string’ine sen yazarsın. Otomatik özet yoktur. Özet istiyorsan sen yazarsın.</p><p><strong class="harf">C)</strong> Coordinator’ın system prompt’u subagent’a akmaz. Subagent kendi prompt’u ile çalışır. Coordinator’ın system prompt’u başka bir odanın kuralıdır.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Sınav tuzağı: ‘subagent context’i inherit eder’ varsayımı. Etmez. Tek kanal, <mark class="kw">Agent tool</mark>’a verdiğin prompt string’dir. Gerekli context’i (file path, karar, hata) açıkça yaz.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s4">
+  <div class="soru-ust">
+    <span class="no">Soru 4.</span>
+    <span class="baslik">Task decomposition stratejisi</span>
+  </div>
+  <p class="kok">Müşteri iade (refund) işleyen bir agent kurulacak. Adımlar: (1) siparişin varlığını doğrula, (2) iade politikasını kontrol et, (3) tutarı hesapla, (4) payment system’de iadeyi başlat. En uygun <mark class="kw">decomposition</mark> hangisidir?</p>
+  <ol class="siklar" type="A"><li>Her adım için ayrı subagent, üstte bir parent coordinator</li><li>Tek agent + dört <mark class="kw">tool</mark> — adımlar sequential ve context paylaşıyor</li><li>İki subagent (validation+policy, calculation+payment)</li><li><mark class="kw">Batch API</mark> ile dört adımı aynı anda işle</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>Bu adımlar <mark class="kw">sequential</mark>’dir: 3. adım 1 ve 2’nin sonucuna ihtiyaç duyar. Ayrıca aynı sipariş / aynı müşteri <mark class="kw">context</mark>’ini paylaşırlar. Toplam tam dört tool — önerilen <mark class="kw">4–5 tool</mark> bandının içinde.</p><p><u class="imp">Sequential + shared context işler tek agent + odaklı tool’larla çözülür. Subagent burada gereksiz handoff maliyeti ekler.</u></p><p>Basit kural: subagent, işler birbirinden bağımsız / parallel çalışabiliyorsa değer üretir. İade gibi ‘önce şunu, sonra bunu’ akışında tek agent daha doğru.</p><p>İade bir zincirdir. Sipariş yoksa politikaya bakılmaz. Politika reddediyorsa tutar hesaplanmaz.</p><p>Bu zinciri dört odaya bölmek işi yavaşlatır. Her oda bir öncekinin söylediğini yeniden öğrenmek zorunda kalır. Tek agent aynı siparişi unutmaz.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Dört subagent, dört kez context kaybı ve coordinator maliyeti demektir. Independent/parallel işler için uygundur, linear refund için değil. Dört oda, dört kez anlatım demektir. İade bunu istemez.</p><p><strong class="harf">C)</strong> Hâlâ sequential işe handoff karmaşıklığı ekler. Paralel kazanç yok. İkiye bölmek de sırayı paralel yapmaz. Zincir zincirdir.</p><p><strong class="harf">D)</strong> <mark class="kw">Batch API</mark> real-time olmayan, yüksek hacimli iş içindir (latency 24 saate kadar). Kullanıcı bekleyen iade için uygun değil. Müşteri iade ekranında 24 saat bekleyemez.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Her workflow subagent istemez. Bağımsız ve parallelizable iş için subagent; sequential + shared context için tek agent.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s5">
+  <div class="soru-ust">
+    <span class="no">Soru 5.</span>
+    <span class="baslik">Silent subagent failure</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Customer Support Resolution Agent</p>
+  <p class="kok">Coordinator, billing dispute’u billing subagent’a delegate eder. Subagent bir <mark class="kw">authentication error</mark> alır ama yalnızca şunu döner: “I was unable to complete the analysis.” Coordinator müşteriye der: “Your billing dispute has been reviewed and no action is needed.” Bu failure’ın <mark class="kw">root cause</mark>’u nedir?</p>
+  <ol class="siklar" type="A"><li>Subagent <mark class="kw">silent failure</mark> yaptı; coordinator failure’ı ayırt edecek context’e sahip değildi</li><li>Coordinator <mark class="kw">system prompt</mark>’unda billing dispute talimatı yok</li><li>Billing API <mark class="kw">timeout</mark>’u kısa</li><li>Coordinator billing için <mark class="kw">Batch API</mark> kullanmalıydı</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p>Bu, <mark class="kw">silent subagent failure</mark> anti-pattern’idir. Coordinator belirsiz bir cümle alır. “Dispute bulunamadı” ile “hiç arama yapılamadı” aynı görünür. Bu yüzden yanlış müşteri cevabı üretir.</p><p><u class="imp">Düzeltme: subagent structured status dönmeli (success / failure / partial) ve somut error detail eklemeli.</u> Örnek: <mark class="kw">status=failure</mark>, <mark class="kw">error_type=authentication</mark>, <mark class="kw">retryable=false</mark>.</p><p>coordinator ‘zeki’ olsa bile, eline sinyal gelmezse doğru karar veremez. Sorun prompt yazarlığı değil, error reporting tasarımıdır.</p><p>Müşteri “incelendi, işlem yok” duyar. Gerçekte inceleme hiç yapılmamıştır. Kimlik doğrulanamamıştır.</p><p>Coordinator kötü niyetli değildir. Elindeki cümle yetersizdir. Belirsiz cümle, yanlış karara dönüşür.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Mükemmel prompt bile eksik error sinyalini telafi etmez. Coordinator’ın göreceği tek şey subagent’ın son mesajıdır. Prompt, gelmeyen sinyali yaratamaz.</p><p><strong class="harf">C)</strong> Timeout olsa bile asıl bug, hatanın coordinator’a structured olarak iletilmemesidir. Timeout ikincil olabilir. Timeout olsa bile asıl eksik, structured error’dır.</p><p><strong class="harf">D)</strong> <mark class="kw">Batch API</mark> bu senaryoyla ilgisizdir. Real-time support + silent failure, batch ile çözülmez. Batch, sessiz hatayı konuşkan yapmaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Sınav tuzağı: silent failure’ı ‘prompt problemi’ gibi sunmak. Asıl tasarım hatası subagent error reporting’dir. Coordinator-side prompt engineering bunu tam kapatmaz. Prompt’u parlatmak, gelmeyen error’u doğurmaz.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s6">
+  <div class="soru-ust">
+    <span class="no">Soru 6.</span>
+    <span class="baslik">tool_choice konfigürasyonu</span>
+  </div>
+  <p class="kok">Architect beş tool’lu bir agent kuruyor. Çoğu etkileşimde model tool’u serbest seçsin. Ama bir workflow’da her zaman önce <mark class="kw">validate_input</mark> çağrılsın. <mark class="kw">tool_choice</mark> nasıl ayarlanmalı?</p>
+  <ol class="siklar" type="A"><li>Genel için <mark class="kw">none</mark>, validation için <mark class="kw">any</mark></li><li>Genel için <mark class="kw">any</mark>, validation için <mark class="kw">auto</mark></li><li>İkisinde de <mark class="kw">required</mark>, asıl işi system prompt’a bırak</li><li>Genel için <mark class="kw">auto</mark>; zorunlu validation için <mark class="kw">{"type": "tool", "name": "validate_input"}</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p><mark class="kw">auto</mark> = model karar verir (konuşma da olabilir, tool da). İsimli form <mark class="kw">{{"type": "tool", "name": "X"}}</mark> = o tool <em>mutlaka</em> çağrılır.</p><p><u class="imp">Kritik kurallar için programmatic enforcement, prompt tavsiyesinden her zaman daha güvenilirdir.</u> “Lütfen önce validate_input çağır” demek probabilistic’tir. Named-tool form deterministic’tir.</p><p>İki ayarı karıştırma. Günlük sohbet için <mark class="kw">auto</mark> yeter. Zorunlu ilk adım için named-tool kullan.</p><p>“Lütfen önce şunu çağır” demek ricadır. Named-tool bir kilit gibidir. Kilit açılmadan sonraki oda görünmez.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> <mark class="kw">none</mark> tool’ları tamamen kapatır. Genel etkileşimde tool gerekebilir. <mark class="kw">any</mark> ise belirli tool’u değil, ‘herhangi bir tool’u’ zorlar. <mark class="kw">none</mark> tool’u kapatır. <mark class="kw">any</mark> ise ‘şu tool’ demez.</p><p><strong class="harf">B)</strong> <mark class="kw">any</mark> bazı tool çağrısını zorunlu kılar ama hangisini seçtiğini garanti etmez. Validation workflow’da tam tersi gerekir: belirli tool. Genel yolda <mark class="kw">any</mark> selamlaşmada bile tool zorlar. Genel yolda <mark class="kw">any</mark>, ‘merhaba’ya bile tool bağlar.</p><p><strong class="harf">C)</strong> <mark class="kw">required</mark> ≈ <mark class="kw">any</mark>: bir tool çağrılmalı, hangisi modelin elinde. System prompt bunu deterministic yapmaz. Prompt, <mark class="kw">required</mark>’ı belirli bir tool yapmaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">auto</mark> = model karar verir. <mark class="kw">any</mark>/<mark class="kw">required</mark> = bir tool zorunlu (model seçer). Named-tool = tam o tool. <mark class="kw">none</mark> = tool yok. Belirli tool için tek deterministic seçenek named-tool form’dur.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s7">
+  <div class="soru-ust">
+    <span class="no">Soru 7.</span>
+    <span class="baslik">Parallel exploration için context forking</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Multi-Agent Research System</p>
+  <p class="kok">Research coordinator’ın market trend üzerine 15 turn’lük konuşması var. Kullanıcı sorar: “Ya zıt market koşullarını varsaysaydık?” Ekip, mevcut thread’i kaybetmeden bu alternatifi keşfetmek istiyor. <mark class="kw">Claude Agent SDK</mark> ile doğru yaklaşım hangisi?</p>
+  <ol class="siklar" type="A"><li>Boş history’li yeni session aç, orijinal konuşmayı özetle</li><li>Message history array’ini yeni API call’a elle kopyala</li><li><mark class="kw">ClaudeAgentOptions</mark> içinde <mark class="kw">fork_session=True</mark> ile mevcut session’ın branched kopyasını oluştur</li><li><mark class="kw">Agent tool</mark> parametresi olarak <mark class="kw">context: fork</mark> kullan</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p><mark class="kw">fork_session=True</mark> (Python) / <mark class="kw">forkSession: true</mark> (TypeScript), <mark class="kw">ClaudeAgentOptions</mark> içinde yeni bir session açar. Bu session, orijinal history’nin <em>tam kopyasını</em> alır ve bağımsız sapar. Orijinal session değişmez.</p><p><u class="imp">Fork, ‘what-if’ analizi için lossy özet yerine exact history kopyası verir.</u> Git’teki branch gibi düşün. Ana dal durur, yeni dal aynı commit history ile açılır.</p><p>Kullanıcı “ya tersini varsaysaydık?” diye sorar. Eski konuşmayı silmek istemezsin. Özetlemek de istemezsin. Çünkü özet sayıları ve itirazları kaybeder.</p><p>Fork tam kopya açar. Ana dal yerinde durur. Yeni dal kendi yoluna gider. İki analiz birbirine karışmaz.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Özet <mark class="kw">lossy</mark>’dir. 15 turn içindeki nüans, sayı ve karşı argüman kaybolur. Parallel exploration tam history ister. 15 turn’lük nüans özetle ölür.</p><p><strong class="harf">B)</strong> Elle kopya kırılgandır: eksik mesaj, yanlış rol, SDK session garantilerinin bypass’ı. Elle kopya bir mesajı bile düşürebilir.</p><p><strong class="harf">D)</strong> <mark class="kw">context: fork</mark> geçerli bir Agent tool parametresi değildir. Fork, session option’dır. Böyle bir Agent tool parametresi yoktur.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Parallel exploration için <mark class="kw">fork_session=True</mark> + <mark class="kw">resume</mark>. Exact history korunur, dallar birbirini kirletmez.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s8">
+  <div class="soru-ust">
+    <span class="no">Soru 8.</span>
+    <span class="baslik">Multi-agent research sistemi tasarlamak</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Multi-Agent Research System</p>
+  <p class="kok">Bir konu üç bağımsız boyutta araştırılacak: academic papers, industry reports, news coverage. Her boyut farklı tool ister. Sonuçlar tek raporda synthesize edilecek. En uygun mimari?</p>
+  <ol class="siklar" type="A"><li>Coordinator + üç specialized subagent (boyut başına, her biri 3 tool), bağımsız çalışıp sonra synthesis</li><li>Dokuz tool’lu tek agent, boyutları sequential işler</li><li>Üç bağımsız agent shared database’e yazar, dördüncü agent raporu okur</li><li>Sequential <mark class="kw">pipeline</mark>: her agent bulgularını bir sonrakine devreder</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p>Bu, <mark class="kw">coordinator-subagent</mark> için ideal vakadır. Üç boyut bağımsızdır, parallel çalışabilir, tool set’leri farklıdır. Her subagent 3 tool ile <mark class="kw">4–5 tool</mark> limitinin altında kalır. Coordinator decomposition + synthesis yapar.</p><p><u class="imp">Bağımsız araştırma kolları sequential pipeline’a zorlanmamalı; parallel subagent hem hız hem isolation verir.</u></p><p>Academic, industry ve news birbirini beklemek zorunda değildir. Üçü aynı anda yürüyebilir.</p><p>Coordinator en sonda birleşir. Her uzman kendi üç tool’u ile kalır. Dokuz tool’u tek kişiye yığmazsın.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Dokuz tool <mark class="kw">tool overload</mark> örneğidir. Model yanlış tool seçme ihtimalini yükseltir. Dokuz tool, yanlış kapıyı seçmeyi kolaylaştırır.</p><p><strong class="harf">C)</strong> Shared database gereksiz altyapı karmaşıklığı ekler. SDK’nın doğal birimi conversation + dönen mesajdır. Ortak database bu senaryoda zorunlu değildir.</p><p><strong class="harf">D)</strong> Pipeline, bağımsız işlere yapay sıra dayatır. News, academic’i beklemek zorunda değildir. Haber kolu paper kolunu beklemek zorunda değildir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Sınav tuzağı: pipeline ‘daha düzenli’ görünür ama bağımsız işlerde performansı düşürür. Hız ve esneklik için coordinator + parallel subagent.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s9">
+  <div class="soru-ust">
+    <span class="no">Soru 9.</span>
+    <span class="baslik">Escalation tasarımı</span>
+  </div>
+  <p class="kok">Customer support agent, nadir bir edge case’te üç kez çözüm denedi, başaramadı. Agent kendisi “%85 confident, issue resolved” diyor. Sistem sırada ne yapmalı?</p>
+  <ol class="siklar" type="A"><li>%85 <mark class="kw">confidence</mark>’e güven, ticket’ı kapat</li><li>Prompt’a ek talimat koyup dördüncü kez dene</li><li>İnsan agent’a <mark class="kw">escalate</mark> et; tam interaction history ve denenmiş tool’ları ver</li><li>Daha büyük <mark class="kw">context window</mark>’lu modele geç</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p><u class="imp">2–3 başarısız denemeden sonra insan’a escalate et ve tam context ver.</u> LLM’nin söylediği <mark class="kw">confidence</mark> skoru kötü <mark class="kw">calibrated</mark>’dir — özellikle gerekli tool yoksa.</p><p>“%85 emin” bir termometre değil, modelin kendi cümlesidir. Tool’u olmayan bir agent yüksek confidence ile uydurabilir. Bu yüzden <mark class="kw">bounded retry with escalation</mark> kullanılır.</p><p>Üç deneme bitti. Aynı tool’lar duruyor. Dördüncü deneme yeni bir kapı açmaz.</p><p>İnsana ticket’ı at. Konuşmanın tamamını ver. Hangi tool’un denendiğini ver. İnsan oradan devam edebilsin. Boş bir “çözülemedi” notu yetmez.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> <mark class="kw">Self-reported confidence</mark> tuzağı. Tool eksikken güvenilmez. Ticket kapatmak müşteriye yanlış ‘çözüldü’ der. Yüksek sayı, eksik tool’u gizler. Ticket kapanmasın.</p><p><strong class="harf">B)</strong> Aynı tool set ile dördüncü deneme yeni yetenek üretmez. Sınır zaten 2–3’tür. Aynı aletle dördüncü vuruş yeni alet üretmez.</p><p><strong class="harf">D)</strong> Daha büyük context window eksik tool yeteneği yaratmaz. Problem hafıza değil, capability + karar kapısıdır. Daha geniş pencere, olmayan tool’u yaratmaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">Bounded retry</mark> (2–3) sonra escalate. <mark class="kw">Self-reported confidence</mark> tek başına karar kriteri olmasın.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s10">
+  <div class="soru-ust">
+    <span class="no">Soru 10.</span>
+    <span class="baslik">Agent bölmek mi, tool eklemek mi?</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Multi-Agent Research System</p>
+  <p class="kok">Research agent’ın şu an 4 tool’u var. Ekip patent search, regulatory lookup, financial data ve social media monitoring eklemek istiyor. En iyi yaklaşım?</p>
+  <ol class="siklar" type="A"><li>Dört yeni tool ekle (toplam 8)</li><li>Dört tool ekle, description’ları iyileştir</li><li>İki yeni specialized subagent oluştur (patent/regulatory ve financial/social, her biri 2 tool); orijinal agent’ı 4 tool ile coordinator yap</li><li>8 tool’lu tek agent + <mark class="kw">few-shot</mark> örnekler</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p>Sekiz tool, <mark class="kw">4–5 tool</mark> önerisini aşar. Yeni domain’leri specialized subagent’lara dağıt. Eski agent coordinator kalır, çekirdek tool’larını tutar, yeni işi delegate eder.</p><p><u class="imp">Tool sayısı şişince description cilası yetmez; karar uzayı büyür ve misrouting artar.</u></p><p>Dört tool’a dört yeni yetenek eklemek cazip gelir. Toplam sekiz olur. Sekiz, önerilen bandın dışındadır.</p><p>Yeni işleri yeni uzmanlara ver. Eski agent coordinator olsun. Kendi dört tool’unu tutsun. Geri kalanı delegate etsin.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> 8 tool = overload. Description iyi olsa da seçim güvenilirliği düşer. Sekiz tool overload’dur. Sayı tek başına yeter.</p><p><strong class="harf">B)</strong> A ile aynı problem. İyi description faydalıdır ama overload’u çözmez. İyi description, fazla seçeneği silmez.</p><p><strong class="harf">D)</strong> Hem tool overload hem de <mark class="kw">few-shot-for-ordering</mark> anti-pattern’i. Few-shot, tool sırasını güvenilir kontrol etmez. Few-shot sıra polisi değildir. Üstüne overload da ekler.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">Few-shot</mark> output format/quality gösterir; tool execution order’ı göstermez. Sıra için hook veya <mark class="kw">tool_choice</mark>.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s11">
+  <div class="soru-ust">
+    <span class="no">Soru 11.</span>
+    <span class="baslik">Agent SDK hook yaşam döngüsü</span>
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Customer Support Resolution Agent</p>
+  <p class="kok">Ekip üç kuralı deterministic enforce etmek istiyor: (1) <mark class="kw">refund_customer</mark> tool’u çağrılmadan önce müşteri kimliği doğrulanmış olsun; (2) her tool sonucu log’lansın; (3) agent <mark class="kw">end_turn</mark> demeden önce ticket için structured status dönmüş olsun. Doğru <mark class="kw">hook</mark> eşlemesi hangisi?</p>
+  <ol class="siklar" type="A"><li>Üç kuralı da <mark class="kw">system prompt</mark>’a yazmak yeter; hook gerekmez</li><li>(1) <mark class="kw">PreToolUse</mark>, (2) <mark class="kw">PostToolUse</mark>, (3) <mark class="kw">Stop</mark> hook</li><li>(1) <mark class="kw">PostToolUse</mark>, (2) <mark class="kw">PreToolUse</mark>, (3) <mark class="kw">SessionStart</mark> hook</li><li>Üç kuralı da <mark class="kw">tool_choice: any</mark> ile zorla</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p><mark class="kw">Claude Agent SDK</mark> hook’ları, prompt’tan bağımsız programmatic kapılardır.</p><ul><li><mark class="kw">PreToolUse</mark>: tool <em>çalışmadan önce</em> bakar. Koşul yoksa call’u <mark class="kw">block</mark> eder. Refund öncesi kimlik kontrolü buradadır.</li><li><mark class="kw">PostToolUse</mark>: tool <em>çalıştıktan sonra</em> sonucu görür. Log, validation, fabrication kontrolü buradadır.</li><li><mark class="kw">Stop</mark>: agent turu bitirmek istediğinde çalışır. “Ticket status yoksa end_turn’e izin verme” buradadır.</li></ul><p><u class="imp">Güvenlik ve iş kuralı gibi bypass edilememesi gereken şeyler prompt değil, hook ile enforce edilir.</u></p><p>Üç kural üç farklı ana ait. Önce, sonra ve bitiş. Bunları tek prompt’a yığmak yetmez.</p><p><mark class="kw">PreToolUse</mark> kapıyı açmadan bakar. <mark class="kw">PostToolUse</mark> iş bittikten sonra bakar. <mark class="kw">Stop</mark> “gidebilir miyim?” diye bakar. Sıra budur.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Prompt probabilistic’tir. Model “unutabilir” veya kuralı yanlış yorumlar. PII / refund gibi kurallar için yetersizdir. Model kuralı unutabilir. Refund bunu kaldırmaz.</p><p><strong class="harf">C)</strong> Sıra ters. <mark class="kw">PostToolUse</mark> call’u önleyemez (tool zaten çalışmıştır). <mark class="kw">SessionStart</mark> oturum açılışıdır, end_turn kapısı değildir. Tool çalıştıktan sonra önlemek geç kalmaktır.</p><p><strong class="harf">D)</strong> <mark class="kw">any</mark> her turda rastgele bir tool zorlar. Kimlik kontrolü, log ve stop condition bunların hiçbiri değildir. <mark class="kw">any</mark> rastgele bir tool ister. Bu üç kuralın hiçbiri değildir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Hook haritası: <mark class="kw">PreToolUse</mark> = önkoşul / block. <mark class="kw">PostToolUse</mark> = sonuç denetimi / log. <mark class="kw">Stop</mark> = bitirme kapısı. Prompt bunları taklit edemez. Üç hook üç zaman dilimidir: önce, sonra, bitiş.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s12">
+  <div class="soru-ust">
+    <span class="no">Soru 12.</span>
+    <span class="baslik">Hook-based vs prompt-based enforcement</span>
+  </div>
+  <p class="kok">Agent, <mark class="kw">PII</mark>’yi anonymize eden preprocessing tool çalışmadan asla işlememeli. En güvenilir enforcement hangisi?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">System prompt</mark> + doğru sırayı gösteren <mark class="kw">few-shot</mark> örnekler</li><li>Tek bir birleşik <mark class="kw">anonymize_and_process</mark> tool’u</li><li><mark class="kw">tool_choice</mark> ile önce <mark class="kw">anonymize_data</mark> zorla, sonra <mark class="kw">auto</mark>'ya dön</li><li><mark class="kw">process_request</mark> üzerinde <mark class="kw">PreToolUse</mark> hook: anonymization bitmemişse <mark class="kw">block</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p><mark class="kw">PreToolUse</mark> hook, programmatic bir önkoşuldur. State’e bakar: anonymization tamam değilse <mark class="kw">process_request</mark> hiç çalışmaz. Deterministic’tir, model “ben PII yok sandım” diyerek bypass edemez.</p><p><u class="imp">Güvenlik-kritik kuralda iki probabilistic mekanizma (prompt + few-shot) bir deterministic hook etmez.</u></p><p><mark class="kw">PII</mark> sızıntısı “çoğu zaman doğru” ile yönetilmez. Model unutabilir. Model yanlış yorumlayabilir.</p><p>Hook state’e bakar. Anonymization yoksa <mark class="kw">process_request</mark> çalışmaz. Bu bir rica değildir. Bu bir engeldir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Prompt ve few-shot hâlâ modelin isteğine bağlıdır. PII sızıntısı ‘çoğu zaman doğru’ ile kabul edilemez. PII için ‘çoğu zaman’ yetmez.</p><p><strong class="harf">B)</strong> Birleşik tool bu turn’de işe yarayabilir ama sonraki turn’de ayrı <mark class="kw">process_request</mark> tekrar ortaya çıkabilir. Önkoşul persist etmez. Yarın ayrı <mark class="kw">process_request</mark> yine ortaya çıkabilir.</p><p><strong class="harf">C)</strong> <mark class="kw">tool_choice</mark> named-tool bir an için doğru tool’u zorlar ama conversation ilerledikçe katı ve kırılgan olur; her varyant workflow’u kapsamaz. Conversation uzayınca named-tool kırılganlaşır.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Sınav tuzağı: prompt + few-shot ‘sağlam’ gelir. Hâlâ probabilistic. Security-critical kural = programmatic hook.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s13">
+  <div class="soru-ust">
+    <span class="no">Soru 13.</span>
+    <span class="baslik">Bounded retry + escalation tasarımı</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Customer Support Resolution Agent</p>
+  <p class="kok">Returns agent, API outage sırasında sınırsız retry yapıyor (bir vakada 47 deneme). Leadership daha iyi tasarım istiyor. <mark class="kw">Bounded retry with escalation</mark> hangisi?</p>
+  <ol class="siklar" type="A"><li>En fazla 10 retry, exponential backoff, sonra müşteriye generic error</li><li>En fazla 2–3 retry, her seferinde specific error feedback, sonra insana tam context ile escalate</li><li>En fazla 5 retry, her seferinde context window büyüt</li><li>Retry’ı tamamen kaldır, ilk failure’da escalate</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>Doğru tarif: <mark class="kw">bounded retry</mark> (önerilen 2–3) + her denemede <mark class="kw">specific error feedback</mark> + sonra insan’a tam history ve denenmiş aksiyonlarla escalate.</p><p><u class="imp">2–3, Goldilocks aralığıdır: transient hatayı düzeltmeye yeter, infinite loop’a düşmez.</u> Specific feedback “yine dene” değil, “şu field şu yüzden düştü, bunu düzelt” demektir.</p><p>47 retry bir tasarım değildir. Maliyet artar. Latency artar. Müşteri bekler. Hata aynı kalabilir.</p><p>İki veya üç deneme yap. Her denemede tam olarak neyin bozuk olduğunu söyle. Yetmezse insan’a ver. Context’siz generic error verme.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> 10 retry çok fazla (maliyet, latency, bazen rate limit). Generic error müşteriyi çıkmazda bırakır; escalate context’i yoktur. On deneme pahalıdır. Generic error da yolu kapatır.</p><p><strong class="harf">C)</strong> Context window API availability sorununu çözmez. Outage bir attention problemi değildir. Pencere büyütmek API’yi ayağa kaldırmaz.</p><p><strong class="harf">D)</strong> İlk failure’da escalate, geçici (transient) hataları insana taşır. Over-escalation olur. İlk hiccup’ta insan’a kaçmak, geçici hatayı büyütür.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Domain’ler boyunca sihirli sayı: 2–3 retry + specific feedback. Az değil, çok değil.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s14">
+  <div class="soru-ust">
+    <span class="no">Soru 14.</span>
+    <span class="baslik">Multi-agent session state</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Multi-Agent Research System</p>
+  <p class="kok">Coordinator üç subagent’ı parallel delegate eder. Subagent B silent failure yapar: “I could not complete the research.” Coordinator’ın conversation state’i nerede yaşar ve B’nin sessiz hatasının etkisi nedir?</p>
+  <ol class="siklar" type="A"><li>State shared database’dedir; coordinator error log sorgular</li><li>State her subagent conversation’ındadır; coordinator tüm session’ları okur</li><li>State coordinator conversation’ındadır; structured error yoksa coordinator failure ile ‘sonuç yok’u ayıramaz</li><li>State’i SDK’nın built-in state store’u yönetir</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p>Her agent’ın kendi izole conversation’ı vardır. Coordinator, subagent’ların yalnızca <em>döndürdüğü final mesajı</em> görür. Belirsiz cümle, gerçek “sonuç yok” ile aynı durur.</p><p><u class="imp">Default SDK mimarisinde coordinator subagent session’ını okuyamaz ve ortak bir state store yoktur.</u> Bu yüzden subagent çıktısının şeması (success/failure/partial + detail) mimari bir zorunluluktur.</p><p>Coordinator subagent’ın odasına giremez. Sadece kapıdan uzatılan son kağıdı okur.</p><p>Kağıtta “yapamadım” yazıyorsa iki anlam vardır. Gerçekten sonuç yoktur, ya da sistem düşmüştür. Ayırt etmek için şema gerekir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Default mimaride shared database veya cross-session error log erişimi yoktur. Bunu sen tasarlarsan ayrı sistem olur. Varsayılan mimaride ortak log rafı yoktur.</p><p><strong class="harf">B)</strong> Coordinator başka session’ların içini okuyamaz. Isolation tam da budur. Isolation tam da ‘içeri giremezsin’ demektir.</p><p><strong class="harf">D)</strong> <mark class="kw">Claude Agent SDK</mark> built-in cross-agent state store sunmaz. State, her agent’ın conversation’ıdır. SDK böyle bir ortak store vaat etmez.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Coordinator yalnızca final subagent output’unu görür. Subagent’lar structured status dönsün: success / failure / partial + details.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s15">
+  <div class="soru-ust">
+    <span class="no">Soru 15.</span>
+    <span class="baslik">Agentic loop ve tool_choice: any</span>
+  </div>
+  <p class="kok">Sistem API çağrılarında <mark class="kw">tool_choice: "any"</mark> kullanıyor. Kullanıcı yazar: “Hello, how are you today?” Ne olur?</p>
+  <ol class="siklar" type="A"><li>Model eldeki tool’lardan birini çağırmaya zorlanır</li><li>Model samimi bir greeting ile cevap verir</li><li>Model error fırlatır</li><li>Model “I cannot help with that” der</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p><mark class="kw">any</mark> her turn’de mutlaka bir tool çağrısı ister. Saf sohbet mesajı için istisna yoktur.</p><p><u class="imp">“Hello” bile tool tetikler. Model ‘en az kötü’ tool’u seçer; error veya refuse etmez.</u> <mark class="kw">any</mark> “araç kullanabilirsin” değil, “araç kullanmak zorundasın” demektir. Karışık sohbet+tool işi için <mark class="kw">auto</mark> kullan.</p><p><mark class="kw">any</mark> “istersen tool kullan” demez. “Bu turda tool kullanacaksın” der.</p><p>Selamlaşma da bir turdur. Model bir tool seçmek zorundadır. En az kötü olanı seçer. Bu yüzden karışık sohbet için <mark class="kw">auto</mark> kullan.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> <mark class="kw">any</mark> altında düz metin greeting imkânsızdır. Model tool call üretmek zorundadır. Düz metin selam, <mark class="kw">any</mark> ile çıkamaz.</p><p><strong class="harf">C)</strong> API bu yüzden error vermez. Model bir tool seçer. API kızmaz. Model bir tool seçer.</p><p><strong class="harf">D)</strong> Refuse de olmaz. ‘Least bad tool’ seçilir; bu da saçma bir tool call üretebilir. Refuse da yoktur. En az kötü tool çağrılır.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">any</mark> yalnızca her isteğin gerçekten tool gerektirdiği işlerde. Mixed conversational/tool workflow için <mark class="kw">auto</mark>.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s16">
+  <div class="soru-ust">
+    <span class="no">Soru 16.</span>
+    <span class="baslik">AI Fluency: Four D's</span>
+  </div>
+  <p class="kok">Organizasyon, etkili AI işbirliği eğitimi veriyor. Çerçeve şunları kapsıyor: neyi/ne zaman delegate edeceğini bilmek, net görev tarifi yazmak, çıktıda discernment göstermek, verification’da diligence uygulamak. Bu çerçevenin adı nedir?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">DACI</mark> framework</li><li>AI’ye uyarlanmış <mark class="kw">RACI</mark> matrix</li><li>Prompt engineering’in Four Pillars’ı</li><li><mark class="kw">AI Fluency</mark> framework: <mark class="kw">Delegation</mark>, <mark class="kw">Description</mark>, <mark class="kw">Discernment</mark>, <mark class="kw">Diligence</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p><mark class="kw">AI Fluency</mark> dört yetkinlik tanımlar:</p><ul><li><mark class="kw">Delegation</mark>: bu işi modele vermeli miyim, hangisini?</li><li><mark class="kw">Description</mark>: görevi nasıl net yazarım?</li><li><mark class="kw">Discernment</mark>: çıktı gerçekten iyi mi, uydurma mı?</li><li><mark class="kw">Diligence</mark>: doğruladım mı, test ettim mi?</li></ul><p><u class="imp">Bu, human–AI sisteminin insan tarafı için CCA’nın temel çerçevesidir. Yalnızca prompt trick’i değildir.</u></p><p>Bu çerçeve yalnız prompt yazma dersi değildir. İnsan–AI işinin tamamını anlatır.</p><p>Ne vereceğini seçersin. Nasıl tarif edersin. Çıktıyı tartarsın. Doğrularsın. Dört adım birbirine bağlıdır.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> <mark class="kw">DACI</mark> (Driver, Approver, Contributor, Informed) proje yönetimi karar çerçevesidir. AI competency modeli değildir. DACI bir karar tablosudur. AI yetkinliği değildir.</p><p><strong class="harf">B)</strong> <mark class="kw">RACI</mark> (Responsible, Accountable, Consulted, Informed) responsibility assignment matrix’tir. Dört D ile karıştırma. RACI kim sorumlu sorusunu cevaplar. Dört D değildir.</p><p><strong class="harf">C)</strong> “Four Pillars of Prompt Engineering” uydurma / dar bir etiket. Fluency; prompt yazmanın ötesinde delegation ve verification içerir. Prompt sütunları, verification’ı kapsamaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> 4 D’yi ezberle. Özellikle <mark class="kw">Description</mark>–<mark class="kw">Discernment</mark> döngüsü vurgulanır: iyi tarif et, çıktıyı kritik oku.</p></div>
+  </div>
+</article>
+<section class="domain" id="d17"><h2>Domain 2 — Claude Code, CLAUDE.md ve CI/CD</h2><p>Soru 17–28. Dosya konumları, flag’ler, skill vs CLAUDE.md, pipeline tasarımı.</p></section>
+<article class="soru" id="s17">
+  <div class="soru-ust">
+    <span class="no">Soru 17.</span>
+    <span class="baslik">CLAUDE.md dosya konumu</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Code Generation with Claude Code</p>
+  <p class="kok">Ekip yeni projede <mark class="kw">Claude Code</mark> kuruyor. Coding standard, tercih edilen library ve proje convention’ları, repo’da çalışan herkese uygulanacak. <mark class="kw">CLAUDE.md</mark> nereye konmalı?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">~/.claude/CLAUDE.md</mark> — tüm ekip üyelerine uygulasın diye</li><li>Project root: <mark class="kw">./CLAUDE.md</mark> veya <mark class="kw">./.claude/CLAUDE.md</mark> — source control ile paylaşılsın</li><li><mark class="kw">/etc/claude-code/CLAUDE.md</mark> — system-wide enforcement</li><li>Her üyenin home dizininde <mark class="kw">~/CLAUDE.md</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>Project-level <mark class="kw">CLAUDE.md</mark> proje kökünde durur: <mark class="kw">./CLAUDE.md</mark> veya <mark class="kw">./.claude/CLAUDE.md</mark>. Version control’e girer, clone eden herkes aynı kuralları alır.</p><p><u class="imp">Takım standardı = repo içi dosya. Kişisel tercih = user-level home dizin dosyası.</u></p><p>Takım kuralı repo’da durur. Clone eden herkes aynı dosyayı alır. Ayrı ayrı home dizinine yazmaya gerek kalmaz.</p><p>Kişisel tercih başka yerdedir. O dosya senin makinenedir. Git’e girmez. Karıştırma.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> <mark class="kw">~/.claude/CLAUDE.md</mark> user-level’dır: o makineye / o kişiye özeldir, git ile paylaşılmaz. Home dizin dosyası takıma gitmez.</p><p><strong class="harf">C)</strong> Org-wide / managed policy ayrı bir managed/org katmanıdır. <mark class="kw">/etc/claude-code/</mark> tanınan konum değildir. Bu path Claude Code’un tanıdığı yer değildir.</p><p><strong class="harf">D)</strong> <mark class="kw">~/CLAUDE.md</mark> tanınan bir Claude Code location değildir. Home kökündeki <mark class="kw">~/CLAUDE.md</mark> de tanınmaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Project <mark class="kw">CLAUDE.md</mark> = repo root veya <mark class="kw">.claude/</mark> (shared, versioned). User <mark class="kw">CLAUDE.md</mark> = <mark class="kw">~/.claude/</mark> (personal, local).</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s18">
+  <div class="soru-ust">
+    <span class="no">Soru 18.</span>
+    <span class="baslik">CLAUDE.md hierarchy ve precedence</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Developer Productivity with Claude</p>
+  <p class="kok">Developer’da şu <mark class="kw">CLAUDE.md</mark> dosyaları var: organization managed, project, user ve local. Hierarchy’yi doğru anlatan hangisi?</p>
+  <ol class="siklar" type="A"><li>User-level her zaman project-level’ı override eder</li><li>Dört seviye de load edilip combine edilir; <mark class="kw">managed</mark>/<mark class="kw">org</mark> seviye override edilemez</li><li>Yalnızca project-level dosya load edilir</li><li>En son modify edilen dosya önceliklidir</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>Dört seviye: <mark class="kw">managed</mark>/<mark class="kw">organization</mark>, <mark class="kw">project</mark>, <mark class="kw">user</mark>, <mark class="kw">local</mark>. Hepsi load edilir ve birleşir. Managed/org, override edilemeyen baseline policy sağlar. <mark class="kw">CLAUDE.local.md</mark> gitignore’lanır; kişisel override içindir.</p><p><u class="imp">Öncelik ‘hangi dosya daha yeni’ değil, seviye yapısıdır. Org policy kişisel dosyayla ezilemez.</u></p><p>Dört dosya birden yüklenir. Biri diğerini “en yeni tarih” diye ezmez.</p><p>Org policy tabandır. Kişisel dosya onu bozamaz. <mark class="kw">CLAUDE.local.md</mark> ise gitignore’lıdır. Sadece senin override’ındır.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Katı bir ‘user her zaman project’i yener’ kuralı yoktur. Özellikle managed/org yenilemez. User, org policy’yi ezemez.</p><p><strong class="harf">C)</strong> Yalnız project değil; dört seviye birden yüklenir. Dört seviye birden yüklenir. Yalnız project değil.</p><p><strong class="harf">D)</strong> Priority temporal (mtime) değildir. Structural’dır. Dosya tarihi öncelik vermez.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Sınav tuzağı: <mark class="kw">CLAUDE.local.md</mark> (gitignore’lı local override) unutulur.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s19">
+  <div class="soru-ust">
+    <span class="no">Soru 19.</span>
+    <span class="baslik">CI/CD: -p flag</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Claude Code for CI/CD</p>
+  <p class="kok">Ekip <mark class="kw">GitHub Actions</mark>’a <mark class="kw">Claude Code</mark> ekler. Pipeline, Claude Code adımında indefinitely hang olur. En olası neden?</p>
+  <ol class="siklar" type="A"><li>Claude Code <mark class="kw">interactive mode</mark>’da; <mark class="kw">-p</mark> flag kullanılmamış</li><li><mark class="kw">ANTHROPIC_API_KEY</mark> environment variable set değil</li><li>CI runner’da bellek yetmiyor</li><li>Claude Code GUI terminal ister</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p><mark class="kw">-p</mark> (<mark class="kw">--print</mark>) olmadan Claude Code interactive mode açar ve terminal input bekler. CI’da insan yoktur; adım sonsuza kadar bekler.</p><p><u class="imp">Pipeline hang = neredeyse her zaman eksik -p. Auth hatası hang değil, hızlı fail’dir.</u></p><p>CI bir insan değildir. Terminalde bekleyen bir komut, sonsuza kadar bekler.</p><p><mark class="kw">-p</mark> print mode açar. Cevabı basar, çıkar. Hang görürsen önce bu flag’e bak.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Eksik API key hızlı <mark class="kw">authentication error</mark> üretir, hang etmez. Key yoksa çabuk hata alırsın. Askıda kalmazsın.</p><p><strong class="harf">C)</strong> Yetersiz bellek crash / OOM verir, sessiz bekleyiş değil. Bellek bitince süreç düşer. Sessiz beklemez.</p><p><strong class="harf">D)</strong> Claude Code <mark class="kw">-p</mark> ile headless çalışır. GUI gerekmez. Headless yeter. Ekran gerekmez.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> CI’da asılı kalma = unutulan <mark class="kw">-p</mark>. En yaygın CI/CD tuzağı. Asılı CI görürsen ilk baktığın yer <mark class="kw">-p</mark> olsun.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s20">
+  <div class="soru-ust">
+    <span class="no">Soru 20.</span>
+    <span class="baslik">CI/CD için --bare flag</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Claude Code for CI/CD</p>
+  <p class="kok">Tüm CI runner’larda tutarlı, reproducible davranış isteniyor. Hangi flag eklenmeli?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">--deterministic</mark></li><li><mark class="kw">--no-context</mark></li><li><mark class="kw">--bare</mark></li><li><mark class="kw">--reproducible</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p><mark class="kw">--bare</mark> hook, skill, plugin, MCP server ve <mark class="kw">CLAUDE.md</mark> auto-discovery’sini atlar. Yalnızca command line’da açıkça verilen flag’ler etki eder.</p><p><u class="imp">CI’da ‘benim makinemde CLAUDE.md vardı’ sürprizi --bare ile kapanır. Runner her seferinde aynı yüzeyle çalışır.</u></p><p>Her runner aynı görünmez. Birinde skill vardır. Diğerinde eski bir hook vardır. Üçüncüsünde kişisel <mark class="kw">CLAUDE.md</mark> sızar.</p><p><mark class="kw">--bare</mark> bu sürprizleri kapatır. Yalnızca komutta yazdığın şey çalışır. CI böyle repeatable olur.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> <mark class="kw">--deterministic</mark> geçerli bir Claude Code flag’i değildir. Böyle bir flag yoktur.</p><p><strong class="harf">B)</strong> <mark class="kw">--no-context</mark> geçerli bir flag değildir. Böyle bir flag yoktur.</p><p><strong class="harf">D)</strong> <mark class="kw">--reproducible</mark> geçerli bir flag değildir. Reproducibility’nin adı <mark class="kw">--bare</mark>’dir. Reproducible davranışın adı <mark class="kw">--bare</mark>’dir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Anthropic’in CI/CD için birincil tavsiyesi <mark class="kw">--bare</mark>’dir. <mark class="kw">-p</mark> ile birlikte kullan.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s21">
+  <div class="soru-ust">
+    <span class="no">Soru 21.</span>
+    <span class="baslik">Custom skill vs CLAUDE.md</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Code Generation with Claude Code</p>
+  <p class="kok">Ekibin karmaşık bir code review checklist’i var. Bunu <mark class="kw">CLAUDE.md</mark>’ye yazmak yerine custom skill (<mark class="kw">.claude/skills/code-review/SKILL.md</mark>) ne zaman kullanılmalı?</p>
+  <ol class="siklar" type="A"><li>Skill ve <mark class="kw">CLAUDE.md</mark> birbirinin yerine geçer</li><li>Talimatlar <mark class="kw">task-specific</mark> ise ve her session’ın context’inde durması gerekmiyorsa skill kullan</li><li>Uzun talimat için <mark class="kw">CLAUDE.md</mark>, kısa talimat için skill</li><li>Skill yalnızca <mark class="kw">slash command</mark> içindir</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p><mark class="kw">CLAUDE.md</mark> her session’da load edilir — her zaman context tüketir. <mark class="kw">Skill</mark> on-demand yüklenir: ilgili görev gelince ortaya çıkar.</p><p><u class="imp">Uzun, task-specific checklist her sohbete girmesin diye skill’dedir. Her gün gereken team convention CLAUDE.md’dedir.</u> Ayırıcı uzunluk değil, ‘her turn’de lazım mı?’ sorusudur.</p><p>Her sohbette code review checklist’ine ihtiyaç yoktur. Ama her sohbette takımın isimlendirme kuralı gerekebilir.</p><p>Sık gereken şey <mark class="kw">CLAUDE.md</mark>’dedir. Nadir ve uzun checklist skill’dedir. Uzunluk değil, sıklık ayırır.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> İkisi farklı iş yapar. Yer değiştirilebilir değillerdir. Yanlış yere koymak ya context şişirir ya da kuralı unutturur. Yanlış yer, ya context şişirir ya kuralı kaçırır.</p><p><strong class="harf">C)</strong> Uzunluk kriter değildir. Kısa ama her session gereken kural CLAUDE.md’de kalır; uzun ama nadir checklist skill olur. Kısa ama her gün gereken kural yine <mark class="kw">CLAUDE.md</mark>’dedir.</p><p><strong class="harf">D)</strong> Skill ilgili olduğunda otomatik de yüklenebilir. Yalnızca slash command değildir. Skill, ilgili olunca kendiliğinden de gelebilir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">Skill</mark> = on-demand, task-specific. <mark class="kw">CLAUDE.md</mark> = always-loaded, broadly applicable.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s22">
+  <div class="soru-ust">
+    <span class="no">Soru 22.</span>
+    <span class="baslik">MCP configuration scoping</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Developer Productivity with Claude</p>
+  <p class="kok">Ekibin shared <mark class="kw">PostgreSQL</mark> <mark class="kw">MCP</mark> server’ı var; her developer’ın personal <mark class="kw">GitHub</mark> MCP server’ı var. Her biri nereye yazılmalı?</p>
+  <ol class="siklar" type="A"><li>İkisi de <mark class="kw">.mcp.json</mark> içinde</li><li>PostgreSQL server <mark class="kw">CLAUDE.md</mark> içinde</li><li>İkisi de <mark class="kw">~/.claude.json</mark> içinde</li><li>PostgreSQL <mark class="kw">.mcp.json</mark> (project); GitHub <mark class="kw">~/.claude.json</mark> (user)</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p>Project-level / shared MCP server <mark class="kw">.mcp.json</mark>’a yazılır ve commit edilir. Kişisel token’lı server <mark class="kw">~/.claude.json</mark>’a yazılır; asla commit edilmez.</p><p><u class="imp">Shared altyapı repo’da, kişisel secret home config’de. Karışınca credential leak olur.</u></p><p>Shared Postgres herkesindir. GitHub token ise senindir.</p><p>Birincisini repo’ya koy. İkincisini home config’e koy. İkisini aynı dosyaya yazarsan ya secret sızar ya da yeni üye shared server’ı kaçırır.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Personal GitHub token <mark class="kw">.mcp.json</mark>’a girerse git history’ye sızar. Token git history’den kolay çıkmaz.</p><p><strong class="harf">B)</strong> <mark class="kw">CLAUDE.md</mark> MCP config formatı değildir. Shared server version-control’deki JSON’da durur. <mark class="kw">CLAUDE.md</mark> server config değildir.</p><p><strong class="harf">C)</strong> İkisini user-level’a koymak shared server için single source of truth’u yok eder. Yeni üye Postgres’i göremez. Yeni üye shared Postgres’i göremez.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">.mcp.json</mark> = project / shared / committed. <mark class="kw">~/.claude.json</mark> = user / personal / never committed.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s23">
+  <div class="soru-ust">
+    <span class="no">Soru 23.</span>
+    <span class="baslik">Pipeline’da machine-parseable output</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Code Generation with Claude Code</p>
+  <p class="kok">CI pipeline sonuçları <mark class="kw">jq</mark> ile programatik çıkarmak istiyor. Hangisi machine-parseable output üretir?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">claude -p</mark> ile düz metin üret, <mark class="kw">regex</mark> ile parse et</li><li><mark class="kw">claude -p</mark> ile <mark class="kw">--output-format json</mark></li><li>Prompt’a “return as JSON” yaz</li><li><mark class="kw">--format structured</mark> kullan</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p><mark class="kw">--output-format json</mark> yapısal JSON üretir; field’lar garantilidir. <mark class="kw">jq</mark> ile güvenilir pipe edilir.</p><p><u class="imp">Pipeline asla “lütfen JSON dön” prompt’una bel bağlanmaz. Flag programmatic constraint’tir.</u></p><p><mark class="kw">jq</mark> tahmin etmez. Garantili field ister.</p><p>Prompt “JSON yaz” diye yalvarabilir. Model yine “Sure!” diye başlar. Flag ise çıktıyı baştan JSON envelope’a kilitler.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Düz metnin garantili şeması yoktur. Regex ilk ‘Here is the JSON:’ cümlesinde kırılır. İlk ‘Here is the JSON’ cümlesi regex’i kırar.</p><p><strong class="harf">C)</strong> Prompt-based JSON probabilistic’tir: markdown fence, ön söz, son not karışabilir. Markdown fence, parse’ı bozar.</p><p><strong class="harf">D)</strong> <mark class="kw">--format structured</mark> geçerli bir flag değildir. Geçerli bir flag değildir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Machine-parseable output için <mark class="kw">--output-format json</mark>. Pipeline’da prompt ile JSON isteme.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s24">
+  <div class="soru-ust">
+    <span class="no">Soru 24.</span>
+    <span class="baslik">Claude Code’da JSON Schema enforcement</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Claude Code for CI/CD</p>
+  <p class="kok">CI, Claude Code’dan şu yapıyı istiyor: <mark class="kw">passed</mark> (boolean), <mark class="kw">failures</mark> (array), <mark class="kw">summary</mark> (string). Schema compliance’ı hangisi garanti eder?</p>
+  <ol class="siklar" type="A"><li>Schema’yı prompt’a göm</li><li><mark class="kw">--output-format json</mark> kullan, sonra post-processing’de validate et</li><li><mark class="kw">--output-format json</mark> ve <mark class="kw">--json-schema</mark> "{…}"</li><li><mark class="kw">--output-format json</mark> + few-shot örnekler</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p><mark class="kw">--json-schema</mark> + <mark class="kw">--output-format json</mark>, şemayı <mark class="kw">generation-time</mark> enforce eder. Uymayan çıktı üretilmez.</p><p><u class="imp">Generation-time enforcement hatayı önler. Post-generation validation yalnızca yakalar — pipeline o anda zaten bozulmuş olabilir.</u></p><p>JSON olmak yetmez. <mark class="kw">passed</mark> boolean olmalı. <mark class="kw">failures</mark> array olmalı. <mark class="kw">summary</mark> string olmalı.</p><p>Bunu generation anında <mark class="kw">--json-schema</mark> dayatır. Sonradan validate etmek, bozuk çıktıyı ancak fark eder. Önlemez.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Prompt’taki şema tarif, enforcement değildir. Model sapabilir. Tarif, kilit değildir. Model sapabilir.</p><p><strong class="harf">B)</strong> Post-validation geç kalır: hatalı çıktı oluşmuştur, retry/escalation senin ekstra işindir. Garanti değildir. Bozuk çıktı doğmuştur. Sen ancak fark edersin.</p><p><strong class="harf">D)</strong> Few-shot gösterir, garanti etmez. Örnek gösterir. Zorlamaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">--json-schema</mark> generation-time. Post-validate sadece detect eder.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s25">
+  <div class="soru-ust">
+    <span class="no">Soru 25.</span>
+    <span class="baslik">Takım coding standard’ı için CLAUDE.md</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Code Generation with Claude Code</p>
+  <p class="kok">Tech lead; TypeScript strict mode, functional React component ve Zod validation’ı tüm ekibe, proje ile versioned şekilde uygulamak istiyor. Doğru <mark class="kw">CLAUDE.md</mark> hangisi?</p>
+  <ol class="siklar" type="A"><li>Her developer kuralı <mark class="kw">~/.claude/CLAUDE.md</mark>’ye ekler</li><li>Tech lead kuralı organization-managed konuma yazar</li><li>Tech lead kuralı repo’daki <mark class="kw">./CLAUDE.md</mark> dosyasına yazar</li><li>Tech lead kuralı e-posta ile gönderir</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p>Proje-specific coding standard, project-level <mark class="kw">./CLAUDE.md</mark>’dedir. Commit edilir, her clone otomatik paylaşır.</p><p><u class="imp">Takım kuralı repo’da yaşar. Org-level tüm şirket politikasıdır; user-level kişiseldir.</u></p><p>React ve Zod bu projenin tercihidir. Şirketin bütün repolarının tercihi olmak zorunda değildir.</p><p>O yüzden yer <mark class="kw">./CLAUDE.md</mark>’dir. Commit et. Her clone alsın. E-posta Claude Code’a ulaşmaz.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> User-level paylaşılmaz. Yeni üye veya başka makine kuralı kaçırır. Yeni makine kuralı kaçırır.</p><p><strong class="harf">B)</strong> Organization-managed katman şirket geneli içindir (ör. ‘secret commit etme’). Bu projenin React/Zod tercihi oraya sığmaz. Şirket geneli ‘secret commit etme’ gibidir. React tercihi değil.</p><p><strong class="harf">D)</strong> E-posta version-control değildir. Claude Code e-postayı okumaz. Claude Code gelen kutusunu okumaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Team coding standards = <mark class="kw">./CLAUDE.md</mark>. Personal preferences = <mark class="kw">~/.claude/CLAUDE.md</mark>.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s26">
+  <div class="soru-ust">
+    <span class="no">Soru 26.</span>
+    <span class="baslik">Claude Code ile CI pipeline tasarımı</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Claude Code for CI/CD</p>
+  <p class="kok">Her pull request’te üç iş: security review, test generation, code style remediation. Doğru pipeline tasarımı?</p>
+  <ol class="siklar" type="A"><li>Tek Claude Code çağrısı, üç iş tek prompt’ta</li><li>Üç ayrı çağrı; her birinde <mark class="kw">--bare -p</mark> ve task-specific <mark class="kw">--json-schema</mark></li><li>Tek çağrı, interactive mode</li><li>Üç parallel çağrı, <mark class="kw">-p</mark> yok</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>Üç ayrı çağrı isolation verir: odaklı schema, dar <mark class="kw">allowedTools</mark>, ayrı failure. <mark class="kw">--bare</mark> runner farkını keser.</p><p><u class="imp">CI’da her concern ayrı, headless, schema’lı çağrıdır. Tek prompt üç işi temiz structured output’a sığdırmaz.</u></p><p>Security review başka iştir. Test generation başka iştir. Style remediation başka iştir.</p><p>Üçünü tek prompt’a tıkarsan şema karışır. Biri bozulunca üçü de bulanıklaşır. Ayrı çağrı, ayrı schema, ayrı failure.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Üç farklı görev tek JSON şemasına zorlanır; çıktı karışır, biri fail olunca hepsi bulanıklaşır. Tek şema üç işi temiz taşımaz.</p><p><strong class="harf">C)</strong> Interactive mode pipeline’ı hang eder. Interactive mode CI’da asılı kalır.</p><p><strong class="harf">D)</strong> <mark class="kw">-p</mark> yoksa hang. Parallel olsa bile interactive bekler. <mark class="kw">-p</mark> yoksa parallel de bekler.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> CI/CD pratiği: her concern için <mark class="kw">--bare -p "prompt" --allowedTools "…" --json-schema "…"</mark>.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s27">
+  <div class="soru-ust">
+    <span class="no">Soru 27.</span>
+    <span class="baslik">--output-format json vs prompt-based JSON</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Claude Code for CI/CD</p>
+  <p class="kok">Developer diyor ki: prompt’a “Please return your response as JSON” eklemek, <mark class="kw">--output-format json</mark> ile eşdeğerdir. Doğru mu?</p>
+  <ol class="siklar" type="A"><li>Evet; ikisi de aynı, güvenilir JSON üretir</li><li>Evet ama flag daha hızlıdır</li><li>Hayır; prompt-based JSON aslında daha güvenilir</li><li>Hayır; prompt-based JSON markdown/ekstra metin içerebilir, flag garantili JSON envelope verir</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p>Flag, çıktının bilinen field’lı geçerli bir JSON object olmasını programmatic zorlar. Prompt isteği probabilistic’tir: “Sure, here you go:” + markdown fence sık görülür.</p><p><u class="imp">Hız farkı asıl konu değildir. Asıl fark reliability / parse garantisidir.</u></p><p>İkisi aynı işi yapıyor gibi durur. Yapmaz.</p><p>Flag bir kuraldır. Prompt bir ricadır. Rica markdown üretebilir. Kural JSON envelope üretir. Pipeline ricaya güvenmez.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Eşdeğer değiller. Biri constraint, öteki ricadır. Biri kural, öteki ricadır. Aynı şey değiller.</p><p><strong class="harf">B)</strong> Hız ana fark değildir. Prompt-based daha az güvenilirdir. Hız farkı asıl mesele değildir.</p><p><strong class="harf">C)</strong> Prompt-based daha güvenilir değildir; tam tersi. Prompt-based daha kırılgandır. Tersi değil.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Structured output’ta programmatic flag (<mark class="kw">--output-format</mark>, <mark class="kw">--json-schema</mark>) her zaman prompt talimatından güvenilirdir.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s28">
+  <div class="soru-ust">
+    <span class="no">Soru 28.</span>
+    <span class="baslik">Yeni ekip üyesi için Claude Code config</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Developer Productivity with Claude</p>
+  <p class="kok">Yeni developer’ın projesinde <mark class="kw">./CLAUDE.md</mark>, <mark class="kw">.mcp.json</mark> ve skill’ler var. Kişisel MCP server’ları da var. Ne configure etmeli?</p>
+  <ol class="siklar" type="A"><li>Personal MCP’leri <mark class="kw">~/.claude.json</mark>’a ekle; isteğe bağlı tercihler <mark class="kw">~/.claude/CLAUDE.md</mark></li><li>Hiçbir şey; her config otomatik</li><li>Project <mark class="kw">.mcp.json</mark>’ı kopyala, personal server ekle</li><li>Project <mark class="kw">.mcp.json</mark>’ı edit edip personal server ekle</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p>Project-level config clone ile otomatik gelir. Developer yalnızca kişisel MCP’yi <mark class="kw">~/.claude.json</mark>’a yazar; kişisel prompt tercihi <mark class="kw">~/.claude/CLAUDE.md</mark>’ye gider.</p><p><u class="imp">Yeni üye repo’yu bozmaz. Personal token project dosyasına asla yazılmaz.</u></p><p>Yeni üye repo’yu clone’lar. <mark class="kw">CLAUDE.md</mark>, <mark class="kw">.mcp.json</mark> ve skill’ler gelir.</p><p>Kendi GitHub token’ını <mark class="kw">~/.claude.json</mark>’a yazar. İsterse kişisel tercihi user-level <mark class="kw">CLAUDE.md</mark>’ye ekler. Project dosyasına token yazmaz.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Personal MCP otomatik gelmez. User-level elle kurulur. Kişisel MCP kendiliğinden gelmez.</p><p><strong class="harf">C)</strong> Kopya divergence yaratır: senin kopyan ile repo ayrılır, merge/conflict ve secret riski doğar. Kopya, senin dosyanı repo’dan ayırır.</p><p><strong class="harf">D)</strong> Project config’e personal token = credential leak. Project’e token yazmak sızıntıdır.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Project config otomatik load. Personal MCP için <mark class="kw">~/.claude.json</mark> manuel setup.</p></div>
+  </div>
+</article>
+<section class="domain" id="d29"><h2>Domain 3 — Structured Output ve Extraction</h2><p>Soru 29–40. Schema vs semantics, retry, few-shot, Batch API, lost in the middle.</p></section>
+<article class="soru" id="s29">
+  <div class="soru-ust">
+    <span class="no">Soru 29.</span>
+    <span class="baslik">Strict JSON schema enforcement neyi garanti eder?</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Structured Data Extraction</p>
+  <p class="kok">Ekip, invoice data çıkarmak için Claude <mark class="kw">structured output</mark> + JSON schema kullanıyor. Strict JSON schema enforcement neyi garanti eder?</p>
+  <ol class="siklar" type="A"><li>Çıkarılan değerler factual olarak doğru olur</li><li>Çıktı geçerli JSON olur</li><li>Çıktı belirtilen yapıya uyar; semantic accuracy garanti değildir</li><li>Hem structural compliance hem semantic accuracy</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p>Strict schema şunu garanti eder: field adları, tipler, required field’lar. Yani yapı doğrudur. “vendor_name gerçekten o fatura mı, total satırların toplamı mı?” bunu schema bilemez.</p><p><u class="imp">Schema = structure guarantee. Semantic / business-rule doğruluğu ayrı validation katmanıdır. İkisi de gerekir.</u></p><p>Örnek: <mark class="kw">{"total": 50, "line_items": [40, 40]}</mark> şemaya uyar (sayılar yerinde) ama matematiksel yalandır.</p><p>Şema bir kalıptır. Kalıp dolu olabilir. İçindeki sayı yine yanlış olabilir.</p><p>Örnek: total 50 görünür. Satırlar 40 ve 40’tır. JSON geçerlidir. Matematik yanlıştır. Asıl sınav ayrımı budur: yapı versus anlam.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Schema factual doğruluk vaat etmez. Yanlış total de geçerli number olabilir. Geçerli number, doğru total demek değildir.</p><p><strong class="harf">B)</strong> Yalnızca ‘geçerli JSON’ çok zayıf. Strict schema belirli field/type/required dayatır. B, C kadar iddialı değildir ve asıl sınav ayrımı structure vs semantics’tir. ‘Geçerli JSON’ sınavın asıl ayrımı değildir.</p><p><strong class="harf">D)</strong> Semantic accuracy schema’dan gelmez. Bunu söylemek tehlikeli bir false sense of safety üretir. Anlam garantisi vermek, sahte güvenlik üretir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Schema = yapı. Validation = anlam. Reliable extraction her iki katmanı ister. Yapı doğru, anlam ayrı kapıdır. İkisini de kur.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s30">
+  <div class="soru-ust">
+    <span class="no">Soru 30.</span>
+    <span class="baslik">“Always return JSON” prompt tuzağı</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Structured Data Extraction</p>
+  <p class="kok">System prompt’ta “Always return your response as valid JSON” var. Yanıtların yaklaşık %15’i markdown veya extra text içeriyor. Doğru düzeltme?</p>
+  <ol class="siklar" type="A"><li>Talimatı daha emphatic yaz (“MUST ALWAYS”)</li><li>Programmatic enforcement: <mark class="kw">--json-schema</mark> veya <mark class="kw">tool_choice</mark></li><li>Ham JSON gösteren few-shot ekle</li><li>Daha yetenekli modele geç</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>Prompt ile JSON istemek yapısal olarak unreliable’dır. Programmatic enforcement, uyumsuz çıktıyı imkânsız kılar.</p><p><u class="imp">“Always return JSON” klasik sınav tuzağıdır. Çözüm daha bağıran prompt değil, generation-time constraint’tir.</u></p><p>Daha bağıran bir cümle oranı biraz düşürür. Sıfıra indirmez.</p><p>Pipeline yüzde 0.1 fail’de bile kırılır. Bu yüzden çözüm prompt değil, programmatic enforcement’dır.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Daha emphatic talimat hâlâ probabilistic. %15 belki %8 olur, sıfır olmaz. Daha sert cümle hâlâ bir cümledir.</p><p><strong class="harf">C)</strong> Few-shot oranı düşürür, yok etmez. Pipeline %0.1 fail bile kırılır. Azalan yüzde, sıfır yüzde değildir.</p><p><strong class="harf">D)</strong> Problem model zekâsı değil, enforcement mekanizmasıdır. Güçlü model de markdown ekler.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> “Always return JSON” görünce programmatic enforcement’a escalate et.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s31">
+  <div class="soru-ust">
+    <span class="no">Soru 31.</span>
+    <span class="baslik">Specific feedback ile validation-retry loop</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Structured Data Extraction</p>
+  <p class="kok">Extraction pipeline, validation fail olunca generic mesajla retry ediyor: “The output was invalid. Please try again.” En etkili iyileştirme?</p>
+  <ol class="siklar" type="A"><li>Generic error’ı <mark class="kw">specific feedback</mark> ile değiştir</li><li>Retry sayısını 10’a çıkar</li><li>Retry’larda daha büyük modele geç</li><li>Retry’ı atla, ilk failure’da escalate et</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p>Specific feedback tam olarak hangi field’ın neden düştüğünü ve neyin değişmesi gerektiğini söyler. Generic mesaj yeni bilgi vermez; model aynı hatayı tekrarlar.</p><p><u class="imp">Retry loop’un asıl değişkeni deneme sayısı değil, feedback kalitesidir.</u> Örnek: “total (120) ≠ sum(line_items)=90. total’ı satır toplamına eşitle.”</p><p>“Yeniden dene” yeni bilgi değildir. Model aynı hatayı tekrarlar.</p><p>“total 120, satır toplamı 90, total’ı eşitle” ise yeni bilgidir. Retry’ın işe yaraması bu ikinci cinsten gelir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Generic mesajla 10 retry aynı hatanın 10 kopyasıdır. Maliyet artar, doğruluk artmaz. Aynı kör mesajla on kez vurmak, on kez aynı düşüştür.</p><p><strong class="harf">C)</strong> Model boyutu, ‘neyi düzelt’ bilgisi kadar işe yaramaz. Büyük model, ‘neyi düzelt’ cümlesinin yerini tutmaz.</p><p><strong class="harf">D)</strong> Basit, düzeltilebilir hataları insana atar. 2–3 specific retry boşa gitmiş olur. Kolay düzeltmeyi insana atmak israftır.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Retry etkinliğinin anahtarı specific feedback’tir.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s32">
+  <div class="soru-ust">
+    <span class="no">Soru 32.</span>
+    <span class="baslik">Few-shot: amaç ve anti-pattern</span>
+  </div>
+  <p class="kok">Developer üç <mark class="kw">few-shot</mark> örnek koyuyor ve bunların tool çağrı sırasını da kontrol ettiğine inanıyor. Doğru ifade hangisi?</p>
+  <ol class="siklar" type="A"><li>Few-shot hem output format’ı hem tool execution order’ı etkili kontrol eder</li><li>Few-shot deprecated; yerine yalnızca JSON schema</li><li>Few-shot yalnızca basit işlerde işe yarar</li><li>Few-shot format ve quality gösterir; tool execution order’ı güvenilir kontrol etmez</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p>Few-shot’un parladığı yer: “çıktı böyle görünsün, kalite bu olsun.” Tool’ların hangi sırayla çağrılacağı başka bir problemdir ve few-shot buna anti-pattern’dir.</p><p><u class="imp">Sıra/önkoşul için hook veya tool_choice. Few-shot tamamlayıcıdır, schema’nın yerine geçmez ve deprecated değildir.</u></p><p>Few-shot bir vitrindir. “Çıktı böyle dursun” der. “Önce şu tool, sonra bu tool” demez.</p><p>Sıra istiyorsan hook veya <mark class="kw">tool_choice</mark> kullan. Few-shot’u format için tut. Schema’nın yerine koyma. Deprecated da değildir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Execution behavior’ı güvenilir bağlamaz. Model örneği ‘stil’ olarak kopyalar, zorunlu sıra olarak değil. Stil kopyalanır. Zorunlu sıra kopyalanmaz.</p><p><strong class="harf">B)</strong> Deprecated değil. Schema ile birlikte kullanılır. Few-shot durur. Schema ile yan yana durur.</p><p><strong class="harf">C)</strong> Karmaşık işlerde de format göstermek için değerlidir. Kısıt ‘yalnızca basit iş’ değildir. Karmaşık işte de format göstermek işe yarar.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">Few-shot</mark> = format ve quality. Tool ordering = programmatic enforcement.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s33">
+  <div class="soru-ust">
+    <span class="no">Soru 33.</span>
+    <span class="baslik">Toplu extraction için Batch API</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Claude Code for CI/CD</p>
+  <p class="kok">Ekip nightly audit’te 5.000 code file’ı security açığı için analiz edecek. En cost-effective yaklaşım?</p>
+  <ol class="siklar" type="A"><li>Real-time API + parallel request</li><li><mark class="kw">Message Batches API</mark> — %50 maliyet tasarrufu</li><li>Claude Code <mark class="kw">-p</mark> ile dosyaları sequential işle</li><li><mark class="kw">Batch API</mark> + <mark class="kw">Zero Data Retention</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p><mark class="kw">Message Batches API</mark> non-blocking, yüksek hacimli, real-time gerektirmeyen işte %50 indirim verir. Nightly audit tam bu profile uyar: sabaha hazır olsun yeter.</p><p><u class="imp">Batch API ile Zero Data Retention birbirini dışlar. Sınav tuzağı budur.</u></p><p>Gece auditi sabaha kalsın yeter. Müşteri beklemiyor.</p><p>Bu profil <mark class="kw">Batch API</mark> içindir. Yüzde 50 indirim buradan gelir. <mark class="kw">Zero Data Retention</mark> ile birlikte seçilemez. Sınav bunu özellikle sorar.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Real-time API, real-time gerekmeyen işte iki kat pahalıdır. Real-time fiyat, gece işine yazık olur.</p><p><strong class="harf">C)</strong> 5.000 dosya sequential hem yavaş hem maliyet olarak Batch kadar iyi değildir. Beş bin dosyayı sıra ile gezmek yavaştır.</p><p><strong class="harf">D)</strong> <mark class="kw">Batch API</mark> <mark class="kw">Zero Data Retention</mark> için eligible değildir. İkisini birden seçemezsin. İki özelliği birden seçemezsin.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Exam trap: Batch API ve Zero Data Retention mutually exclusive.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s34">
+  <div class="soru-ust">
+    <span class="no">Soru 34.</span>
+    <span class="baslik">Invoice extraction için validation pipeline</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Structured Data Extraction</p>
+  <p class="kok">Schema enforcement yapıyı doğru üretiyor ama extracted value’larda yanlış total veya misspelling oluyor. Bu boşluğu hangisi kapatır?</p>
+  <ol class="siklar" type="A"><li>Semantic validation katmanı: cross-referencing + business rule check</li><li>Daha restrictive JSON schema</li><li>Daha büyük modele geç</li><li>Daha fazla few-shot</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p>Bu, “schema structure’ı doğrular, semantics’i doğrulamaz” boşluğudur. Vendor adını veritabanıyla karşılaştır, satır toplamını kontrol et, sapmayı insan review’a bayrakla.</p><p><u class="imp">JSON schema “total = satırların toplamı” gibi business logic ifade edemez. Onun için kod gerekir.</u></p><p>Schema “total bir sayıdır” der. “Total satırların toplamıdır” demez.</p><p>O kuralı kod yazar. Vendor adını tabloyla karşılaştır. Sapmayı insana göster. İş katmanı budur.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Daha sıkı schema hâlâ tiplere bakar, aritmetiğe bakmaz. Daha sıkı tip, aritmetik yazmaz.</p><p><strong class="harf">C)</strong> Daha büyük model hata oranını biraz düşürebilir; garanti ve business rule değildir. Daha büyük model kuralı kodlamaz.</p><p><strong class="harf">D)</strong> Örnek marjinal iyileştirme sağlar, invariant enforce etmez. Örnek, invariant değildir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Schema yapıyı, business rule anlamı enforce eder. Her zaman iki katman.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s35">
+  <div class="soru-ust">
+    <span class="no">Soru 35.</span>
+    <span class="baslik">Prompt-based vs programmatic enforcement</span>
+  </div>
+  <p class="kok">Tutar asla 1.000.000 USD’yi aşmamalı. Üç öneri var: (A) system prompt’a yaz, (B) <mark class="kw">PostToolUse</mark> hook, (C) JSON schema <mark class="kw">"maximum": 1000000</mark>. En güvenilir seçim hangisi?</p>
+  <ol class="siklar" type="A"><li>Yalnızca A</li><li>B ve C birlikte</li><li>Yalnızca C</li><li>Üçü birden</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>Schema generation-time sayı tavanı koyar. <mark class="kw">PostToolUse</mark> hook bağımsız validation, log ve custom error ekler. İki programmatic katman, defense in depth’tir.</p><p><u class="imp">Prompt en zayıf katmandır. Schema iyi, hook operasyonel kontrol ekler. Prompt’u üçüncü olarak saymak reliability’yi yükseltmez.</u></p><p>Prompt “1.000.000’u geçme” diyebilir. Model yine geçebilir.</p><p>Schema tavan koyar. Hook tavanı bir kez daha ölçer, loglar, hata üretir. İki programmatic katman yeter. Prompt’u üçüncü saymak gücü artırmaz.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Yalnız prompt probabilistic’tir. Model 1_000_001 yazabilir. Rica, tavanı tutmaz.</p><p><strong class="harf">C)</strong> Yalnız schema, log/alerting/özel hata akışını vermez. Operasyonel kör nokta kalır. Yalnız schema, log ve alarm vermez.</p><p><strong class="harf">D)</strong> Prompt marjinal değer katar; ‘üçü birden en güvenilir’ şıkkı sınavda tuzak olarak durur. Asıl güç B+C. Üçüncü katman olarak prompt, gücü şişirir gibi durur. Şişirmez.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Sıralama: prompt (en zayıf) &lt; schema &lt; programmatic hook. Birden fazla programmatic katman kullan.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s36">
+  <div class="soru-ust">
+    <span class="no">Soru 36.</span>
+    <span class="baslik">Escalation öncesi maksimum retry</span>
+  </div>
+  <p class="kok">Data extraction pipeline validation fail olunca retry ediyor. Escalation öncesi önerilen maksimum retry nedir?</p>
+  <ol class="siklar" type="A"><li>1 retry</li><li>5–7 retry</li><li>2–3 retry + specific feedback</li><li>Sınırsız retry</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p>Önerilen aralık 2–3 retry, her seferinde specific error feedback. Sonra insan’a tam context ile escalate.</p><p><u class="imp">Bu sayı CCA domain’lerinde tekrarlanır: refund, extraction, support. Magic number 2–3’tür.</u></p><p>Bir deneme az kalabilir. Beş-yedi deneme israftır. Sınırsız deneme kilitlenmedir.</p><p>2–3, düzeltilebilir hataya yer açar. Yetmezse insan’a çıkar. Bu sayı refund’ta da extraction’da da support’ta da aynıdır.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Tek retry, düzeltilebilir (ör. format) hatalar için yetmeyebilir. Format hatası bazen ikinci şansı ister.</p><p><strong class="harf">B)</strong> 5–7 kaynak ve latency israfıdır; model aynı hatada takılı kalır. Aynı hatada uzun süre dönmek pahalıdır.</p><p><strong class="harf">D)</strong> Infinite loop riski — Q13’teki 47 retry örneği. Sınırsız döngü, 47 retry örneğidir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> 2–3 retry, CCA’da evrensel bounded retry aralığıdır.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s37">
+  <div class="soru-ust">
+    <span class="no">Soru 37.</span>
+    <span class="baslik">CI/CD code review için prompt tasarımı</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Claude Code for CI/CD</p>
+  <p class="kok">İlk prompt: “Review this code for security issues.” Review’lar tutarsız. En etkili iyileştirme?</p>
+  <ol class="siklar" type="A"><li>Prompt’u specific category, severity level ve required output format ile yeniden yapılandır</li><li>“Be very thorough and detailed” ekle</li><li>10 few-shot örnek ekle</li><li>Claude Opus 4.6’ya geç</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p>Belirsiz prompt değişken sonuç üretir. Kategori (injection, secret, authz), severity (high/med/low) ve zorunlu çıktı formatı belirsizliği keser.</p><p><u class="imp">Tutarsız çıktı = vague prompt. Tutarlı çıktı = structured prompt + output contract.</u> modele ‘iyi ol’ demek yerine ‘şu kutuları doldur’ de.</p><p>“Security’ye bak” geniş bir odadır. Her run başka köşeyi tarar.</p><p>Odayı böl. Injection, secret, authz. Severity yaz. Çıktı formatını kilitle. Modele “iyi ol” deme. “Şu kutuları doldur” de.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> “Thorough” hâlâ belirsizdir. Her run farklı derinlikte olur. ‘Thorough’ her seferinde başka derinlikte olur.</p><p><strong class="harf">C)</strong> 10 örnek token yer, tutarlılığı garanti etmez. Format için 1–3 örnek yeter; asıl eksik kategori sözleşmesidir. On örnek token yer. Asıl eksik sözleşme hâlâ yoktur.</p><p><strong class="harf">D)</strong> Daha yetenekli model, vague görevi hâlâ farklı yorumlar. Önce prompt’u düzelt. Belirsiz görev, güçlü modelde de dağılır.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Inconsistent output → vague prompt. Consistent output → specific categories + output requirements.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s38">
+  <div class="soru-ust">
+    <span class="no">Soru 38.</span>
+    <span class="baslik">Uzun belge extraction ve lost in the middle</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Structured Data Extraction</p>
+  <p class="kok">50 sayfalık contract extraction’da sayfa 20–30 hata oranı yüksek, kenarlar doğru. Problemin adı ve doğru mitigation?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">Context overflow</mark> — daha büyük context window</li><li><mark class="kw">Attention decay</mark> — talimatları tekrarla</li><li><mark class="kw">Token exhaustion</mark> — <mark class="kw">Prompt Caching</mark></li><li><mark class="kw">Lost in the middle</mark> — küçük chunk’lara böl, sonuçları merge et</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p><mark class="kw">Lost in the middle</mark>: uzun context’te kenarlar (baş ve son) daha iyi okunur, orta zayıflar. İçerik silinmez; attention dağılımı bozulur.</p><p><u class="imp">Daha büyük window kapasiteyi artırır, attention dağılımını düzeltmez. Asıl çözüm chunking + merge.</u></p><p>Baş ve son temizdir. Orta sayfalar zayıftır. Metin silinmemiştir. Dikkat orta bölgede düşer.</p><p>Window’u büyütmek daha çok orta üretir. Çözüm belgeden daha büyük pencere değil, küçük parçalar ve merge’dir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Overflow, token limit aşımıdır. Burada içerik sığıyor ama orta sayfalar zayıf. Daha büyük window aynı etkiyi büyütür. Limit aşılmamıştır. Orta sayfa zayıftır. Büyüyen pencere bunu büyütür.</p><p><strong class="harf">B)</strong> Talimat tekrarı marjinal yardım eder. Problem ‘unutulan talimat’tan çok ‘ortadaki madde metni’dir. Ayrıca şıktaki ad uydurmadır. Problem unutulan talimat değil, ortadaki maddedir.</p><p><strong class="harf">C)</strong> <mark class="kw">Prompt Caching</mark> maliyeti düşürür, orta-sayfa accuracy’sini düzeltmez. Ucuz token, orta sayfayı okutmaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Büyük context window <mark class="kw">lost in the middle</mark>’ı FIX ETMEZ. Doğru fix her zaman chunking + merging. Büyüyen pencere, orta sayfayı kurtarmaz. Parçala, birleştir.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s39">
+  <div class="soru-ust">
+    <span class="no">Soru 39.</span>
+    <span class="baslik">API üzerinden structured output</span>
+  </div>
+  <p class="kok">Developer, Claude API’den typed <mark class="kw">Pydantic</mark> object istiyor. En güçlü type guarantee hangisi?</p>
+  <ol class="siklar" type="A"><li>System prompt + manuel parse</li><li><mark class="kw">client.messages.parse()</mark> + Pydantic model + structured-outputs beta header</li><li>Normal <mark class="kw">messages.create()</mark> + <mark class="kw">JSON.parse()</mark></li><li><mark class="kw">Batch API</mark> + JSON schema</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p><mark class="kw">messages.parse()</mark> + Pydantic, compile-time ve runtime validation’lı typed object döner. Şu an en güçlü type guarantee (beta header ile) budur.</p><p><u class="imp">Stable alternatif: structured tool + tool_choice named-tool. Ham JSON.parse type safety vermez.</u></p><p>Ham JSON.parse yalnızca parantezlerin kapanıp kapanmadığına bakar. Tip bakmaz.</p><p><mark class="kw">messages.parse()</mark> + Pydantic hem üretir hem doğrular. Typed object eline gelir. Stable yolda structured tool + named <mark class="kw">tool_choice</mark> da aynı işi görür.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Manuel parse ne compile-time ne schema guarantee verir. Elle parse, tipe söz vermez.</p><p><strong class="harf">C)</strong> <mark class="kw">JSON.parse</mark> yalnızca sözdizimini kontrol eder. Field adı/tip yoksa runtime’da patlar veya sessizce yanlış gider. Yanlış field sessizce de geçebilir.</p><p><strong class="harf">D)</strong> <mark class="kw">Batch API</mark> non-interactive bulk içindir; typed SDK parse akışı değildir. Batch, typed parse akışı değildir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">messages.parse()</mark> + Pydantic = en güçlü tipler (beta). Stable: <mark class="kw">tool_choice</mark> + structured tool.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s40">
+  <div class="soru-ust">
+    <span class="no">Soru 40.</span>
+    <span class="baslik">Extraction accuracy: geçerli JSON, yanlış değer</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Structured Data Extraction</p>
+  <p class="kok">Pipeline %98 schema-compliant JSON üretiyor ama kayıtların %12’sinde yanlış value var. Bu ne anlama gelir?</p>
+  <ol class="siklar" type="A"><li>JSON schema daha restrictive olmalı</li><li>Model hallucinate ediyor — rule-based extraction’a geç</li><li>Schema yapı doğrular, semantic accuracy doğrulamaz; semantic validation katmanı ekle</li><li>%12 hata production için kabul edilebilir</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p>Yapı neredeyse mükemmel (%98) ama anlam %12 kırık. Schema görevini yapıyor; business-rule / cross-reference katmanı yok.</p><p><u class="imp">%98 structural + %12 semantic hata = schema çalışıyor, validation katmanı eksik.</u></p><p>Yüzde 98 yapı skoru schema’nın çalıştığını gösterir. Yüzde 12 yanlış değer, anlam katmanının eksik olduğunu gösterir.</p><p>Schema’yı daha da sıkmak vendor adını doğrulamaz. Asıl eksiğin adı validation’dır.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Daha sıkı schema semantic kuralı (yanlış vendor, yanlış kod) yazamaz. Sıkı schema, yanlış vendor adını yakalamaz.</p><p><strong class="harf">B)</strong> %12 value error, validation ile düzeltilebilir. Tüm LLM’i atmak aşırı tepkidir. Tüm LLM’i atmak gerekmez. Validation yeter.</p><p><strong class="harf">D)</strong> Finansal / legal extraction için %12 production’da kabul edilemez. Para ve hukuk için yüzde 12 kabul değil.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Yüksek schema skoru + yüksek value hatası → validation eksik, schema suçlu değil.</p></div>
+  </div>
+</article>
+<section class="domain" id="d41"><h2>Domain 4 — MCP, Tool ve Routing</h2><p>Soru 41–51. Tools / Resources / Prompts, .mcp.json, silent tool failure.</p></section>
+<article class="soru" id="s41">
+  <div class="soru-ust">
+    <span class="no">Soru 41.</span>
+    <span class="baslik">MCP primitives</span>
+  </div>
+  <p class="kok"><mark class="kw">Model Context Protocol</mark> (<mark class="kw">MCP</mark>) üç core primitive tanımlar. Hangisi üçünü de doğru adlandırır?</p>
+  <ol class="siklar" type="A"><li>Functions, Variables, Callbacks</li><li>Actions, Data, Templates</li><li>Endpoints, Schemas, Handlers</li><li><mark class="kw">Tools</mark>, <mark class="kw">Resources</mark>, <mark class="kw">Prompts</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p>MCP’nin üç primitive’i:</p><ul><li><mark class="kw">Tools</mark>: parametreli, executable function (aksiyon, dinamik sonuç).</li><li><mark class="kw">Resources</mark>: context’e data olarak yüklenen içerik.</li><li><mark class="kw">Prompts</mark>: önceden tanımlı workflow template.</li></ul><p><u class="imp">Sınav exact isim ister. Actions/Data yakın görünür ama yanlış terminology’dir.</u></p><p>Sınav yakın çeviriyi puanlamaz. Exact isim ister.</p><p><mark class="kw">Tools</mark>, <mark class="kw">Resources</mark>, <mark class="kw">Prompts</mark>. Actions/Data kulağa doğru gelir. Spec bu adları kullanmaz.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Genel programlama terimleri. MCP spec’i bu adları kullanmaz. Programlama sözlüğü, MCP spec değildir.</p><p><strong class="harf">B)</strong> Anlam olarak yakın bir çeviri ama resmi primitive adları bunlar değil. Sınav resmi adı puanlar. Yakın anlam, resmi ad değildir.</p><p><strong class="harf">C)</strong> REST / HTTP kavramları. MCP bunlarla tanımlanmaz. HTTP terimleri başka bir dünyadır.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Ezber: Tools, Resources, Prompts.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s42">
+  <div class="soru-ust">
+    <span class="no">Soru 42.</span>
+    <span class="baslik">MCP’te Tools vs Resources</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Developer Productivity with Claude</p>
+  <p class="kok">MCP server hem search yeteneği hem de statik API reference’ın tam metnini sunuyor. Her biri hangi primitive?</p>
+  <ol class="siklar" type="A"><li>İkisi de Tool</li><li>Search = <mark class="kw">Tool</mark>, API reference = <mark class="kw">Resource</mark></li><li>İkisi de Resource</li><li>Search = <mark class="kw">Prompt</mark>, reference = <mark class="kw">Resource</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p><mark class="kw">Tools</mark> = parametre alan, her çağrıda değişen aksiyon (search query). <mark class="kw">Resources</mark> = görece statik data; context’e persistent yüklenir (API reference).</p><p><u class="imp">Sınav bu sınırı çok sorar: aksiyon/dinamik = Tool, data/persistent = Resource.</u></p><p>Search her seferinde yeni bir soru sorar. Sonuç değişir. Bu bir aksiyondur. Tool’dur.</p><p>API reference durur. Sık okunur. Context’te kalması iyidir. Resource’dur. İkisini aynı primitive’e zorlama.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Statik referansı Tool yapmak her seferinde gereksiz call ve description şişmesi demektir. Durağan metni her seferinde çağırmak israftır.</p><p><strong class="harf">C)</strong> Search parametre ister; Resource ‘şu URI’deki belgeyi yükle’ modelidir, query almaz. Search ise query ister.</p><p><strong class="harf">D)</strong> <mark class="kw">Prompts</mark> workflow template’dir, search engine değildir. Prompt, arama motoru değildir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Tools = actions/dynamic. Resources = data/persistent.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s43">
+  <div class="soru-ust">
+    <span class="no">Soru 43.</span>
+    <span class="baslik">Tool description routing mekanizmasıdır</span>
+  </div>
+  <p class="kok">İki tool’un description’ı belirsiz; isteklerin %25’i yanlış tool’a gidiyor. Root cause ve fix?</p>
+  <ol class="siklar" type="A"><li>Tool description birincil <mark class="kw">routing</mark> mekanizmasıdır; specific olacak şekilde yeniden yaz</li><li>Modeli fine-tune et</li><li>Keyword-based routing katmanı ekle</li><li>İki tool’u birleştir</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p>Model, hangi tool’u seçeceğine önce description’lara bakarak karar verir. Belirsiz, örtüşen cümleler %25 misrouting üretir. Çözüm: her description’da ne yaptığı, ne zaman kullanılacağı ve benzer tool’dan farkı yazılsın.</p><p><u class="imp">Routing için ilk dokunduğun yer description’dır. Fine-tune veya ekstra classifier genelde gereksizdir.</u></p><p>Model tool menüsünü okuyarak seçer. Menü bulanıksa sipariş karışır.</p><p>Her description üç şeyi söylesin: ne yapar, ne zaman kullanılır, komşusundan nasıl ayrılır. Fine-tune genelde gerekmez.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Fine-tune pahalı ve gereksizdir; asıl sinyal zayıf yazılmıştır. Pahalıdır. Asıl metin hâlâ bulanıktır.</p><p><strong class="harf">C)</strong> Keyword katmanı karmaşıklık ekler. Model zaten natural language router’dır; ona net etiket ver. Model zaten dil ile seçer. Ona net etiket ver.</p><p><strong class="harf">D)</strong> Birleştirmek ayrı functionality’yi kaybeder. Problem örtüşen metin, örtüşen ihtiyaç değilse split durmalı. İki iş gerçekten ayrıysa birleştirme.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Her tool description: ne yapar, ne zaman kullanılır, benzer tool’dan nasıl ayrılır.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s44">
+  <div class="soru-ust">
+    <span class="no">Soru 44.</span>
+    <span class="baslik">Agent başına tool sayısı</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Code Generation with Claude Code</p>
+  <p class="kok">Agent’ın 18 tool’u var ve sık yanlış tool seçiyor. Önerilen çözüm?</p>
+  <ol class="siklar" type="A"><li>18 description’ı da iyileştir</li><li>Specialized subagent’larla agent başına <mark class="kw">4–5 tool</mark>’a indir</li><li>En az kullanılan tool’ları sil</li><li>Few-shot ekle</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>18 tool, 4–5 önerisini çok aşar. Karar uzayı büyür; description cilası yetmez. Coordinator + specialized subagent ile her agent’ın önüne küçük bir menü koy.</p><p><u class="imp">4–5 tool limiti bu domain’in en tutarlı kuralıdır. 18 = split et.</u></p><p>18 seçenek çoktur. İyi yazılmış 18 etiket hâlâ 18 seçenektir.</p><p>Kararı küçült. Coordinator uzman seçsin. Her uzman 4–5 tool görsün. Silmek yerine dağıt.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Description overload’u yenemez. Q10/Q43’te description faydalıdır ama ölçek 18 iken yetmez. 18 iyi etiket, 18 seçenektir.</p><p><strong class="harf">C)</strong> Az kullanılan tool hâlâ gereken anda lazım olabilir. Silmek capability kaybıdır; split etmek dağıtmaktır. Az kullanılan tool, o anda tek ihtiyacın olabilir.</p><p><strong class="harf">D)</strong> Few-shot seçimi güvenilir kontrol etmez. Few-shot, menüyü küçültmez.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> 18 tool + yanlış seçim = subagent’lara böl, her birinde 4–5 tool.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s45">
+  <div class="soru-ust">
+    <span class="no">Soru 45.</span>
+    <span class="baslik">MCP project configuration nerede?</span>
+  </div>
+  <p class="kok">Project-level MCP server configuration nerede saklanır?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">~/.claude.json</mark></li><li><mark class="kw">CLAUDE.md</mark> içinde düz metin</li><li>Project root’ta <mark class="kw">.mcp.json</mark></li><li><mark class="kw">~/.mcp/config.json</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p>Project-level MCP server’lar project root’taki <mark class="kw">.mcp.json</mark> dosyasındadır ve source control’e commit edilir.</p><p><u class="imp">Konum ezberi: shared = .mcp.json, personal = ~/.claude.json.</u></p><p>Shared MCP’nin yeri nettir. Project root. Dosya adı <mark class="kw">.mcp.json</mark>. Commit edilir.</p><p><mark class="kw">CLAUDE.md</mark> talimat taşır, server ayağa kaldırmaz. <mark class="kw">~/.claude.json</mark> ise kişiseldir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> <mark class="kw">~/.claude.json</mark> user-level’dır. Burası kişisel katmandır.</p><p><strong class="harf">B)</strong> <mark class="kw">CLAUDE.md</mark> talimat dosyasıdır, MCP JSON config değildir. Markdown, MCP JSON değildir.</p><p><strong class="harf">D)</strong> Tanınan bir path değildir. Böyle bir path yoktur.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">.mcp.json</mark> = project / shared / committed.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s46">
+  <div class="soru-ust">
+    <span class="no">Soru 46.</span>
+    <span class="baslik">MCP config’de kişisel API key</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Developer Productivity with Claude</p>
+  <p class="kok">Developer’ın personal GitHub API token’ı var. Teammate bunu project <mark class="kw">.mcp.json</mark>’a eklemeyi öneriyor. Neden problem?</p>
+  <ol class="siklar" type="A"><li>Problem değil</li><li>Token source control’e commit edilir</li><li><mark class="kw">.mcp.json</mark> authentication desteklemez</li><li>Performance sorunu olur</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p><mark class="kw">.mcp.json</mark> commit edilir. Personal token oraya yazılırsa git history’de kalır (sızdırıldıktan sonra rotate etsen bile eski commit’te durur).</p><p><u class="imp">Personal token yalnızca ~/.claude.json dizinindedir, asla .mcp.json’da değil.</u></p><p>Token bir kez git’e girerse history’de kalır. Sonradan silsen de eski commit durur.</p><p>O yüzden kişisel key home config’dedir. Project <mark class="kw">.mcp.json</mark> shared içindir, secret için değil.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Ciddi security risk. ‘Sadece internal repo’ bile yeterli gerekçe değildir. Internal repo, secret’ı masum yapmaz.</p><p><strong class="harf">C)</strong> <mark class="kw">.mcp.json</mark> authentication alanını destekler; sorun format değil, secret’ın paylaşılmasıdır. Format destekler. Sorun paylaşılmasıdır.</p><p><strong class="harf">D)</strong> Konu performance değil, credential exposure. Yavaşlık değil, sızıntı konuşuluyor.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Personal token → <mark class="kw">~/.claude.json</mark>. Asla <mark class="kw">.mcp.json</mark>.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s47">
+  <div class="soru-ust">
+    <span class="no">Soru 47.</span>
+    <span class="baslik">Shared ve personal MCP server tasarımı</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Developer Productivity with Claude</p>
+  <p class="kok">Takım shared PostgreSQL/Sentry server + her developer’ın personal GitHub server’ı istiyor. Doğru config?</p>
+  <ol class="siklar" type="A"><li>Hepsi <mark class="kw">.mcp.json</mark>’da, placeholder ile</li><li>Shared <mark class="kw">.mcp.json</mark>, personal <mark class="kw">~/.claude.json</mark></li><li>Hepsi <mark class="kw">~/.claude.json</mark>, yanında setup script</li><li>Shared olanlar <mark class="kw">CLAUDE.md</mark> talimatı olarak</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>Q22’nin tasarım versiyonu: shared altyapı commit’li <mark class="kw">.mcp.json</mark>, kişisel token’lı araçlar <mark class="kw">~/.claude.json</mark>.</p><p><u class="imp">Placeholder’lı .mcp.json hâlâ birinin gerçek token yapıştırma riskini taşır.</u></p><p>Bu, Q22’nin tasarım hali. Shared Postgres ve Sentry repo’da. Personal GitHub evde.</p><p>Placeholder da tehlikelidir. Biri gerçek token yapıştırır. Setup script ise gerçeği dağıtır. Tek kaynak <mark class="kw">.mcp.json</mark> + <mark class="kw">~/.claude.json</mark> çiftidir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Placeholder unutulup gerçek token commit edilir. Klasik kaza. Placeholder, yapıştırma kazasına açıktır.</p><p><strong class="harf">C)</strong> Setup script single source of truth’u dağıtır; yeni üye script’i kaçırır. Script kaçınca shared server da kaçar.</p><p><strong class="harf">D)</strong> <mark class="kw">CLAUDE.md</mark> MCP server ayağa kaldırmaz. Talimat, process başlatmaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Shared = <mark class="kw">.mcp.json</mark>. Personal = <mark class="kw">~/.claude.json</mark>.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s48">
+  <div class="soru-ust">
+    <span class="no">Soru 48.</span>
+    <span class="baslik">Multi-agent sistemde tool error handling</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Multi-Agent Research System</p>
+  <p class="kok">Subagent bir MCP tool çağırır, 503 alır, ama yalnızca “I was unable to complete the research.” döner. Ne yanlış ve nasıl iyileştirilir?</p>
+  <ol class="siklar" type="A"><li>Structured error dön: tool name, error type, retryable?, partial results</li><li>Sınırsız retry</li><li>Coordinator tool’u kendisi çağırsın</li><li>MCP tool tüm retry’ı internally yapsın, agent’a hiç hata göstermesin</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p>Q5 ile aynı aile: silent failure. 503 retryable olabilir; coordinator bunu bilirse 2–3 bounded retry veya başka subagent dener. Belirsiz cümle ile bilemez.</p><p><u class="imp">Subagent çıktısı: tool adı, error type, retryable bayrağı, varsa partial results.</u></p><p>503 bazen geçer. Coordinator bunu bilirse iki-üç kez dener. Bilmezse “araştırma yok” sanır.</p><p>Cümle değil, alan dön. Tool adı, error type, retryable, partial. Q5 ile aynı aile budur.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Sınırsız retry sistemi kilitler (Q13). 503 kalıcı da olabilir. Kalıcı 503, sistemi kilitler.</p><p><strong class="harf">C)</strong> Separation of concerns bozulur; coordinator şişer, isolation biter. Coordinator şişer. Isolation biter.</p><p><strong class="harf">D)</strong> Kalıcı hatalar agent’a çıkmalı. Sonsuz iç retry yine silent failure üretir. İçeride sonsuz retry, yine sessiz kalır.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Subagent dönsün: tool name, error type, retryability, partial results.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s49">
+  <div class="soru-ust">
+    <span class="no">Soru 49.</span>
+    <span class="baslik">Resource mı Tool mu?</span>
+  </div>
+  <p class="kok">API reference documentation için Resource, Tool’dan ne zaman daha uygundur?</p>
+  <ol class="siklar" type="A"><li>Data sık değişiyorsa</li><li>Data context’e sığmayacak kadar büyükse</li><li>Client bir aksiyon execute etmeliyse</li><li>Data görece statikse, context’e sığıyorsa ve persistent availability faydalıysa</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p><mark class="kw">Resource</mark> stabil, sığan ve sık referans verilen data içindir. API reference tam budur: her search’te değişmez, agent’ın elinin altında dursun istersin.</p><p><u class="imp">Sık değişen, çok büyük veya aksiyon gerektiren şey Tool’dur (gerekirse search tool).</u></p><p>API reference her dakikada değişmez. Context’e sığar. Agent sık bakar. Resource tam buraya oturur.</p><p>Sık değişen, çok büyük veya side effect üreten şey Tool’dur. Search de Tool’dur.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Sık değişen data için Tool (veya sık refresh) daha doğru. Resource bayat kalır. Sık değişen şey bayat Resource olur.</p><p><strong class="harf">B)</strong> Context’e sığmayan data’yı Resource diye yüklemek lost-in-the-middle ve token israfı. Search Tool kullan. Sığmayan metin attention’ı da bozar. Search Tool kullan.</p><p><strong class="harf">C)</strong> Aksiyon = Tool. Resource data taşır, side effect yapmaz. Side effect Tool’dadır. Resource taşımakla kalır.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Resource = static + fits context + persistent benefit. Tool = dynamic / action.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s50">
+  <div class="soru-ust">
+    <span class="no">Soru 50.</span>
+    <span class="baslik">Tool misrouting olan agent’ı yeniden tasarlamak</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Developer Productivity with Claude</p>
+  <p class="kok">15 tool’lu agent %30 misrouting yaşıyor. En etkili redesign?</p>
+  <ol class="siklar" type="A"><li>Description’ları yeniden yaz</li><li>Coordinator + beş specialized subagent (her biri 3 tool)</li><li>API tool’larını kaldır</li><li>Ayrı bir classification model ekle</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>15 tool çok büyük karar uzayı. Beş subagent × 3 tool, her agent’ın seçimini küçük tutar. Coordinator yalnızca ‘hangi uzman’ı seçer.</p><p><u class="imp">Yüksek misrouting + 15 tool = split. Description tek başına ölçeği çözmez.</u></p><p>Yüzde 30 misrouting, etiket cilasıyla bitmez. 15 kapılı bir koridor çok geniştir.</p><p>Beş uzman, her biri üç tool. Coordinator yalnızca “hangi oda?” diye sorar. İşlev silinmez. Dağılır.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Marjinal yardım. Q43 küçük örtüşmede işe yarar; 15 tool’da asıl dert sayıdır. Küçük örtüşmede description yeter. 15 tool’da sayı konuşur.</p><p><strong class="harf">C)</strong> İşlev kaybı. Problem tool’ların varlığı değil, tek agent’ta toplanması. API tool’u silmek işlevi siler. Dağıtmak silmez.</p><p><strong class="harf">D)</strong> Ek model = ek latency ve ek failure noktası. Önce mimariyi küçült. Ek model, ek bekleme ve ek kırılma demektir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> 15 tool + yüksek misrouting = 4–5 tool’luk subagent’lara böl.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s51">
+  <div class="soru-ust">
+    <span class="no">Soru 51.</span>
+    <span class="baslik">Multi-agent’ta silent tool failure</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Multi-Agent Research System</p>
+  <p class="kok">Subagent’ın MCP tool’u fail oluyor; subagent yine de inandırıcı bir özet uyduruyor. Bunu hangisi önler?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">PostToolUse</mark> hook — tool response’u validate et</li><li><mark class="kw">PreToolUse</mark> hook — availability kontrolü</li><li>Retry sayısını artır</li><li>Coordinator’a tüm tool’lara doğrudan erişim ver</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p><mark class="kw">PostToolUse</mark> gerçek tool çıktısına bakar: error body, boş result, beklenen pattern yokluğu. Uydurma özet, tool result “fail” iken üretilmişse yakalanır.</p><p><u class="imp">PreToolUse call’u önler ama substitution / fabrication’ı göremez. Çünkü fabrication, call’dan sonra olur.</u></p><p>Tool düşer. Subagent yine düzgün bir özet yazar. Bu fabrication’dır.</p><p><mark class="kw">PreToolUse</mark> çağrıdan önce durur. Uydurma ise çağrıdan sonra doğar. Onu <mark class="kw">PostToolUse</mark> görür. Gerçek response’a bakar.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> <mark class="kw">PreToolUse</mark> tool ayaktayken çağrıya izin verir. Ayakta olup boş/hatalı dönünce fabrication’ı kaçırır. Ayakta olan tool da boş dönebilir. Uydurma sonra gelir.</p><p><strong class="harf">C)</strong> Retry, fail sonrası uydurmayı durdurmaz; bazen daha çok uydurma üretir. Tekrar denemek, uydurmayı durdurmaz.</p><p><strong class="harf">D)</strong> Subagent mimarisini bozar; coordinator overload ve tek nokta hata. Bütün tool’lar coordinator’da toplanırsa mimari biter.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Exam trap: <mark class="kw">PreToolUse</mark> call’u önler, <mark class="kw">PostToolUse</mark> ne olduğunu yakalar. <mark class="kw">PreToolUse</mark> kapıyı kollar. <mark class="kw">PostToolUse</mark> içeride ne olduğunu görür.</p></div>
+  </div>
+</article>
+<section class="domain" id="d52"><h2>Domain 5 — Context, Maliyet, Observability ve Reliability</h2><p>Soru 52–60. Lost in the middle, Prompt Caching, Batch API, defense in depth.</p></section>
+<article class="soru" id="s52">
+  <div class="soru-ust">
+    <span class="no">Soru 52.</span>
+    <span class="baslik">Lost in the middle etkisi</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Customer Support Resolution Agent</p>
+  <p class="kok">Support agent uzun account history işler ama ortadaki issue’ları kaçırır. Bu fenomenin adı?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">Context overflow</mark></li><li><mark class="kw">Token truncation</mark></li><li><mark class="kw">Lost in the middle</mark> effect</li><li><mark class="kw">Recency bias</mark></li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p><mark class="kw">Lost in the middle</mark>: uzun context’te baş ve son güçlü, orta zayıf attention alır. Account history’nin ortasındaki chargeback kaçabilir.</p><p><u class="imp">Bu bir kapasite sorunu değil accuracy sorunudur. Tüm token’lar context’tedir, silinmemiştir.</u></p><p>Account history’nin başı ve sonu temiz okunur. Ortadaki chargeback kaçabilir.</p><p>Token limiti aşılmamış olabilir. Metin kesilmemiş olabilir. Yine de orta zayıf kalır. İsim budur: <mark class="kw">lost in the middle</mark>.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> <mark class="kw">Overflow</mark> = token limit aşımı. Limit aşılmamış olabilir. Limit aşılmamış olabilir. İsim yine lost in the middle’dır.</p><p><strong class="harf">B)</strong> <mark class="kw">Truncation</mark> içeriği keser. Burada içerik duruyor, dikkat zayıf. Kesilmeyen metin de ortada zayıf kalır.</p><p><strong class="harf">D)</strong> <mark class="kw">Recency bias</mark> sonlara aşırı ağırlık demektir; erken içeriği de vurur. ‘Orta’ya özgü isim lost in the middle’dır. Recency sona bakar. Bu etki ortaya özgüdür.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">Lost in the middle</mark> accuracy’yi bozar, capacity’yi değil. Content present’tir.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s53">
+  <div class="soru-ust">
+    <span class="no">Soru 53.</span>
+    <span class="baslik">Daha büyük context window attention’ı düzeltmez</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Claude Code for CI/CD</p>
+  <p class="kok">Code review agent büyük PR’larda zorlanıyor. Teammate daha büyük context window öneriyor. Bu doğru çözüm mü?</p>
+  <ol class="siklar" type="A"><li>Evet</li><li>Hayır — daha büyük window attention dağılımını düzeltmez</li><li>Evet, 10x daha büyükse</li><li>Hayır, çünkü daha yavaş</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>Daha büyük window daha çok token sığdırır. Attention hâlâ kenarlara kayar; orta diff’ler kaybolur. <mark class="kw">Lost in the middle</mark> window size ile ‘tedavi’ olmaz.</p><p><u class="imp">Doğru fix: PR’ı dosya/hunk chunk’larına böl, her chunk’ı ayrı review et, findings’i merge et.</u></p><p>Daha büyük pencere daha çok diff sığdırır. Dikkat yine kenara kayar.</p><p>PR’ı dosya dosya böl. Her parçayı ayrı review et. Findings’i birleştir. Sığdırmak, okumak değildir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Klasik context-window-size tuzağı. Sığdırmak ≠ okumak. Sığdırmak okumak değildir.</p><p><strong class="harf">C)</strong> Eşik yok. 10x window 10x orta bölge üretir. On kat pencere, on kat orta bölge demektir.</p><p><strong class="harf">D)</strong> Sonuç (hayır) doğru, gerekçe yanlış. Asıl neden hız değil, attention dağılımı. Hayır doğru, gerekçe yanlış. Asıl dert hız değil.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> More capacity ≠ better attention. Chunking doğru fix.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s54">
+  <div class="soru-ust">
+    <span class="no">Soru 54.</span>
+    <span class="baslik">Self-reported confidence calibration</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Structured Data Extraction</p>
+  <p class="kok">Pipeline, insan review’a routing için Claude’un self-reported confidence’ını kullanıyor. Problem nedir?</p>
+  <ol class="siklar" type="A"><li>LLM <mark class="kw">confidence</mark> skoru güvenilir <mark class="kw">calibrated</mark> değildir</li><li>Problem yok; confidence güvenilirdir</li><li>Confidence yalnızca classification’da çalışır</li><li>Threshold’lar çok yüksek</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p>LLM’nin “%92 eminim” demesi kalibre bir olasılık değildir. Özellikle tool’u yokken veya uydururken yüksek sayılar görebilirsin.</p><p><u class="imp">Self-reported confidence tek kapı olmasın. Routing için programmatic validation (schema, business rule, cross-reference) kullan.</u></p><p>“%92 eminim” bir termometre değildir. Model uydururken de yüksek sayı söyleyebilir.</p><p>İnsan review’a giden kapı bu sayı olmasın. Kapı schema, business rule ve cross-reference olsun. Q9 ile aynı tuzak.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Güvenilir değildir. Sınav bunu özellikle test eder (Q9 ile aynı aile). Sınav bu tuzağı özellikle kurar.</p><p><strong class="harf">C)</strong> Problem extraction’a özgü değil, genel. Classification’da da kalibrasyon zayıftır. Kalibrasyon extraction’a da classification’a da bozuktur.</p><p><strong class="harf">D)</strong> Eşiği 99’a çekmek miscalibration’ı düzeltmez; model 99 uydurabilir. 99’a çekmek, 99 uydurmayı engellemez.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> LLM self-reported confidence primary gatekeeper olmasın. Programmatic validation kullan. Modelin kendi notu, kapı bekçisi olmasın.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s55">
+  <div class="soru-ust">
+    <span class="no">Soru 55.</span>
+    <span class="baslik">Prompt Caching ekonomisi</span>
+  </div>
+  <p class="kok">Support agent günde 10.000 istekte aynı 4.000-token system prompt’u kullanıyor. Prompt Caching ne tasarruf sağlar?</p>
+  <ol class="siklar" type="A"><li>Tüm çağrılarda %50 indirim</li><li>Sıfır tasarruf</li><li>Tüm token’larda %90 indirim</li><li>Cache read’de %90 indirim (write’ta %25 premium)</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: D</p>
+    <div class="neden"><p><mark class="kw">Prompt Caching</mark>: tekrarlayan statik önek cache’lenir. Cache <em>read</em> %90 ucuz, cache <em>write</em> %25 pahalı. 10.000 isteğin çoğu read olduğu için net tasarruf büyüktür. 4.000 token çoğu modelde minimum eşiği geçer.</p><p><u class="imp">%50 Batch API indirimidir, caching değil. Caching tüm token’ları değil, cache’lenen öneki indirir.</u></p><p>Aynı 4.000 token her günde on bin kez gider. Statik önek cache’lenir.</p><p>İlk yazım biraz pahalıdır. Sonraki okumalar yüzde 90 ucuzdur. Yüzde 50 ise Batch indirimidir. Karıştırma.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> %50 <mark class="kw">Batch API</mark> indirimidir. Ayrıca Batch support gibi blocking işe uymaz (Q56). Yüzde 50 Batch’indir. Üstelik support’a uymaz.</p><p><strong class="harf">B)</strong> 4.000 token çoğu modelde cache minimumunu karşılar. Sıfır tasarruf yanlış. 4.000 token eşiği çoğu modelde geçer.</p><p><strong class="harf">C)</strong> Yalnızca cache’lenen kısım %90; her yeni user mesajı full fiyatdır. ‘Tüm token’lar’ abartıdır. Yeni user mesajı cache’lenmez. Hepsi yüzde 90 olmaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> <mark class="kw">Prompt Caching</mark>: read %90 tasarruf. <mark class="kw">Batch API</mark>: %50 indirim, yüksek latency.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s56">
+  <div class="soru-ust">
+    <span class="no">Soru 56.</span>
+    <span class="baslik">Blocking workflow’da Batch API</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Customer Support Resolution Agent</p>
+  <p class="kok">Mühendis, tüm support etkileşimlerini %50 kazanmak için Message Batches API’ye almak istiyor. Neden problem?</p>
+  <ol class="siklar" type="A"><li>Conversation history desteklemez</li><li>Customer support <mark class="kw">blocking</mark>/<mark class="kw">real-time</mark>; Batch API’nin SLA’sı yok (24 saate kadar)</li><li>Yalnızca İngilizce destekler</li><li>Batch başına en fazla 100 request</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p><mark class="kw">Batch API</mark> non-blocking / offline iş içindir. Müşteri chatte beklerken 24 saatlik pencere kabul edilemez. %50 indirim latency ile takas edilir.</p><p><u class="imp">User-facing / blocking = real-time API. Nightly / bulk = Batch API.</u></p><p>Müşteri chatte bekler. 24 saatlik pencere support değildir.</p><p>Yüzde 50 cazip durur. Karşılığında SLA yoktur. User-facing iş real-time API’dedir. Batch gece işidir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> History’yi destekler. Gerekçe bu değil. History desteklenir. Asıl dert latency’dir.</p><p><strong class="harf">C)</strong> Dil kısıtı yok; aynı modeller/diller. Dil kısıtı yoktur.</p><p><strong class="harf">D)</strong> Üst sınır 100 değil; on binlerce (dokümante 100.000’e kadar) request alınabilir. Üst sınır yüz değil, on binlercedir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Batch API = non-blocking/offline. Real-time API = user-facing/blocking.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s57">
+  <div class="soru-ust">
+    <span class="no">Soru 57.</span>
+    <span class="baslik">Extraction reliability için cross-referencing</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Structured Data Extraction</p>
+  <p class="kok">Medical claims sistemi bazen yanlış procedure code çıkarıyor. En etkili reliability katmanı?</p>
+  <ol class="siklar" type="A"><li>Claude’dan double-check iste</li><li>İkinci model çalıştır, karşılaştır</li><li>Bilinen database’e karşı <mark class="kw">programmatic cross-referencing</mark></li><li>Prompt’a daha fazla detay ekle</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: C</p>
+    <div class="neden"><p>Procedure code kapalı bir katalogdur. Kod, authoritative tabloya bakıp “bu kod var mı, bu diagnosis ile uyumlu mu?” diye deterministic kontrol eder.</p><p><u class="imp">Kritik field’larda LLM’e “bir daha bak” demek hâlâ LLM’dir. Kaynak gerçeği programatik karşılaştır.</u></p><p>Procedure code açık uçlu bir cümle değildir. Kapalı bir listedir.</p><p>Listeye bak. Kod var mı? Diagnosis ile uyumlu mu? İki modelin anlaşması liste yerine geçmez. İkisi de yanlış olabilir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Aynı model aynı hatayı kendine onaylatabilir. Self-check zayıf kalibrasyonla gelir (Q54). Aynı model aynı hatayı onaylayabilir.</p><p><strong class="harf">B)</strong> İki LLM anlaşabilir ve ikisi de yanlış olabilir. Maliyet artar, authoritative kaynak yoktur. İki LLM’in anlaşması katalog değildir.</p><p><strong class="harf">D)</strong> Prompt marjinaldir; katalog doğrulaması vermez. Prompt, kapalı listeyi taşımaz.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Kritik field’ları authoritative source’a karşı programatik doğrula.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s58">
+  <div class="soru-ust">
+    <span class="no">Soru 58.</span>
+    <span class="baslik">Parallel analiz için context forking</span>
+    
+  </div>
+  <p class="senaryo"><strong>Senaryo:</strong> Multi-Agent Research System</p>
+  <p class="kok">50 turn’lük konuşma var. Kullanıcı iki alternatif stratejiyi, tam history korunarak aynı anda keşfetmek istiyor. Doğru yaklaşım?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">fork_session=True</mark> iki kez</li><li>Özetle iki yeni session</li><li>Aynı session’da sequential işle</li><li><mark class="kw">Message Batches API</mark> kullan</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p>Q7’nin uygulaması: <mark class="kw">fork_session=True</mark> iki bağımsız dal açar; her dal exact full history ile başlar. Dalların yazması birbirini kirletmez, orijinal session durur.</p><p><u class="imp">Özet lossy’dir. Aynı session’da sıra ile denemek ikinci analizi birincinin mesajlarıyla kirletir.</u></p><p>İki strateji aynı anda yürüsün. İkisi de 50 turn’ü tam görsün.</p><p><mark class="kw">fork_session=True</mark> bunu iki kez yapar. Özet kaybettirir. Aynı session’da sıra ile gitmek ikinci analizi birincinin cümleleriyle kirletir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Summarization 50 turn’ü kaybeder. Parallel ‘what-if’ tam history ister. 50 turn özetle ölür.</p><p><strong class="harf">C)</strong> Sequential aynı conversation’a yazar; ikinci strateji birincinin varsayımlarını görür (contamination). İkinci analiz, birincinin varsayımını görür.</p><p><strong class="harf">D)</strong> <mark class="kw">Batch API</mark> interactive exploration değildir; saatler sürebilir. Batch, interactive ‘what-if’ değildir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Paylaşılan exact history ile parallel exploration = fork session.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s59">
+  <div class="soru-ust">
+    <span class="no">Soru 59.</span>
+    <span class="baslik">Observability</span>
+  </div>
+  <p class="kok">Agentic sistemlerde observability’yi asıl hangisi iyileştirir?</p>
+  <ol class="siklar" type="A"><li><mark class="kw">Logs</mark> ve <mark class="kw">metrics</mark></li><li>Daha büyük modeller</li><li>Daha fazla tool</li><li>Daha uzun prompt</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: A</p>
+    <div class="neden"><p><mark class="kw">Observability</mark> = sistemin ne yaptığını dışarıdan görebilmek. Üç katmanı şöyle ayır:</p><ul><li><mark class="kw">Logs</mark>: bu turn’de hangi tool, hangi <mark class="kw">stop_reason</mark>, subagent ne döndü, hook block etti mi?</li><li><mark class="kw">Metrics</mark>: tool misrouting oranı, retry sayısı, escalation oranı, latency, schema fail %.</li><li>İzlenebilir <mark class="kw">trace</mark>: coordinator → subagent zinciri.</li></ul><p><u class="imp">Göremediğin silent failure’ı (Q5, Q48, Q51) düzeltemezsin. Model büyütmek görünürlük artırmaz.</u></p><p>Göremediğin şeyi düzeltemezsin. Silent failure log yoksa görünmez.</p><p>Hangi tool çağrıldı, <mark class="kw">stop_reason</mark> neydi, hook block etti mi, retry kaçtı, escalate oranı nedir. Bunlar log ve metric’tedir. Daha büyük model bunları yazmaz.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">B)</strong> Daha büyük model capability artırabilir; hangi tool’un 503 verdiğini göstermez. Büyük model, 503’ü görünür kılmaz.</p><p><strong class="harf">C)</strong> Daha fazla tool tam tersine misrouting ve gürültü artırır (Q44). Observability değildir. Fazla tool, gürültü ve misrouting ekler.</p><p><strong class="harf">D)</strong> Uzun prompt davranışı değiştirebilir ama ölçmez. Ölçüm log/metric’tedir. Uzun prompt ölçüm değildir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> You can’t fix what you can’t see. Production agent = log + metric + structured error, yalnızca ‘daha iyi prompt’ değil.</p></div>
+  </div>
+</article>
+
+<article class="soru" id="s60">
+  <div class="soru-ust">
+    <span class="no">Soru 60.</span>
+    <span class="baslik">End-to-end reliability</span>
+  </div>
+  <p class="kok">Reliable agentic sistemlerin ana ilkesi nedir?</p>
+  <ol class="siklar" type="A"><li>Mükemmel prompt’lar</li><li><mark class="kw">System design</mark> + katmanlı <mark class="kw">safeguard</mark>’lar</li><li>Daha büyük modeller</li><li>Daha fazla data</li></ol>
+  <div class="cevap-kutu">
+    <p class="dogru">Doğru cevap: B</p>
+    <div class="neden"><p>Bu sınavın özeti tek cümlede: <u class="imp">Reliability engineered olur, prompted olmaz.</u> Production sistem şunları üst üste koyar:</p><ul><li>Doğru mimari: sequential işe tek agent, parallel işe coordinator-subagent, 4–5 tool.</li><li>Programmatic kapılar: <mark class="kw">tool_choice</mark>, <mark class="kw">schema</mark>, <mark class="kw">PreToolUse</mark>/<mark class="kw">PostToolUse</mark>/<mark class="kw">Stop</mark> hook.</li><li>Anlam katmanı: business rule, cross-reference (schema yetmez).</li><li>Bounded retry (2–3, specific feedback) + insan escalation.</li><li>Structured error (silent failure yok) + observability.</li><li>Context: chunking (lost in the middle), fork_session (what-if).</li></ul><p>Prompt faydalıdır. Güçlü model faydalıdır. İkisi de tek başına production kilidi değildir.</p><p>Kilidi katman kurar. Mimari, schema, hook, retry, escalation, observability. Reliability yazılmaz. İnşa edilir.</p></div>
+    <div class="yanlis"><p><strong>Neden diğer şıklar yanlış:</strong></p><p><strong class="harf">A)</strong> Mükemmel prompt probabilistic kalır. PII, para, schema, CI parse’ı prompt ile kilitlenmez. PII ve para, ricayla kilitlenmez.</p><p><strong class="harf">C)</strong> Daha büyük model attention, calibration, tool overload ve CI hang sorunlarını çözmez. Büyük model hang’i, overload’u ve kalibrasyonu çözmez.</p><p><strong class="harf">D)</strong> Daha fazla data (few-shot yığını, koca CLAUDE.md) context’i şişirip lost in the middle’ı kötüleştirebilir. Şişen context, ortayı daha da kaybettirir.</p></div>
+    <div class="ipucu"><p><strong>CCA ipucu:</strong> Reliability is engineered, not prompted. Defense in depth kur: validation, retry, hook, escalation, observability. Katman katman kilitle. Tek bir mükemmel cümleye bel bağlama.</p></div>
+  </div>
+</article>
+
+</body></html>
